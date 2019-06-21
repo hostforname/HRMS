@@ -1,5 +1,5 @@
-<%@page import="com.hrms.bean.Department"%>
-<%@page import="com.hrms.dao.DepartDao"%>
+<%@page import="com.hrms.bean.Staff"%>
+<%@page import="com.hrms.dao.StaDao"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -30,28 +30,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<hr>
     	<table border="1" cellspacing="0" width="800px">
     		<tr align="center">
-    			<td>序号</td>
-    			<td>部门名称</td>
-    			<td>创建时间</td>
-    			<td>备注</td>
+    			<td>员工编号</td>
+    			<td>姓名</td>
+    			<td>性别</td>
+    			<td>部门</td>
+    			<td>工种</td>
+    			<td>学历</td>
+    			<td>参加工作时间</td>
     			<td>操作</td>
     		</tr>
     		<%
-    			DepartDao ddao=new DepartDao();
-    			ArrayList<Department> departs=ddao.getDepartment();
-    			for(Department depart:departs){
+    			StaDao sdao=new StaDao();
+    			ArrayList<Staff> stas=sdao.getStaff();
+    			for(Staff sta:stas){
     		%>
     		<tr align="center">
-    			<td><%=depart.getDepartmentid() %></td>
-    			<td><%=depart.getDepartment() %></td>
-    			<td><%=depart.getCreatetime() %></td>
-    			<td><%=depart.getRemarks() %></td>
-    			<td>
-    			<!-- 
-					<a href="TransferDepSer?depid=<%=depart.getDepartmentid()%>&dep=<%=depart.getDepartment() %>&depct=<%=depart.getCreatetime() %>&depre=<%=depart.getRemarks() %>">修改</a>
-					&nbsp;&nbsp; -->
-					<a href="RemoveDepSer?depid=<%=depart.getDepartmentid()%>">删除</a>
-					
+    			<td><%=sta.getStaffid() %></td>
+    			<td><%=sta.getStaffname() %></td>
+    			<td><%=sta.getSex() %></td>
+    			<td><%=sta.getDepartmeng() %></td>
+    			<td><%=sta.getWorktype() %></td>
+    			<td><%=sta.getEducation() %></td>
+    			<td><%=sta.getWorktime() %></td>
+    			<td> 			
+					<a href="TransferStaSer?staid=<%=sta.getStaffid()%>&stana=<%=sta.getStaffname() %>&stase=<%=sta.getSex() %>&stade=<%=sta.getDepartmeng() %>&stawty=<%=sta.getWorktype() %>&staed=<%=sta.getEducation() %>&stawtm=<%=sta.getWorktime() %>">修改</a>
+					&nbsp;&nbsp; 
+					<a href="RemoveStaSer?staid=<%=sta.getStaffid()%>">删除</a>				
 				</td>
     		</tr>
     		<%
@@ -60,16 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</table>
     	<br>
     	<hr>
-    	<a href="addDepInfo.jsp">添加部门信息</a>
+    	<a href="addStaInfo.jsp">添加部门信息</a>
     	</center>
   </body>
 </html>
-
-
-
-
-
-
-
-
-

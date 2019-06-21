@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 					
 			</table>
-			<iframe id="ifrpage" name="ifrpage" src="" width="100%" heigth="2000"></iframe>
+			<iframe id="ifrpage" name="ifrpage" src="" width="100%" height="80%"></iframe>
 		</center>
 		
     	

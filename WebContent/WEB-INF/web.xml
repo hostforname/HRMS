@@ -35,4 +35,39 @@
   	<url-pattern>/UpdateDepSer</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>RemoveDepSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.RemoveDepSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RemoveDepSer</servlet-name>
+  	<url-pattern>/RemoveDepSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddDepSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.AddDepSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddDepSer</servlet-name>
+  	<url-pattern>/AddDepSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>TransferStaSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.TransferStaSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TransferStaSer</servlet-name>
+  	<url-pattern>/TransferStaSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>UpdateStaSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.UpdateStaSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UpdateStaSer</servlet-name>
+  	<url-pattern>/UpdateStaSer</url-pattern>
+  </servlet-mapping>
 </web-app>
