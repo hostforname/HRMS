@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.hrms.dao.UserDao;
 
 public class LoginServlet extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void init() throws ServletException { }
 	public void destroy() {
 		super.destroy();

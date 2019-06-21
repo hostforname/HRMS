@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>修改员工信息</title>
+    <title>添加员工信息</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -24,29 +24,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     	<center>
-    	<h2>修改部门信息</h2>
+    	<h2>添加员工信息</h2>
     	<hr>
-    	<form action="UpdateDepSer" method="post">
+    	<form action="AddStaSer" method="post">
     	<table border="1" cellspacing="0" width="300px">
     		<tr align="center">
-    			<td>编号</td>
-    			<td><input type="text" name="txtDepId" value="<%=request.getAttribute("depid") %>"></td>
+    			<td>员工编号</td>
+    			<td><input type="text" name="txtStaId"></td>
+    		</tr>
+    		<tr align="center">
+    			<td>姓名</td>
+    			<td><input type="text" name="txtStaNa"></td>
+    		</tr>
+    		<tr align="center">
+    			<td>性别</td>
+    			<td><input type="text" name="txtStaSe"></td>
     		</tr>
     		<tr align="center">
     			<td>部门</td>
-    			<td><input type="text" name="txtDep" value="<%=request.getAttribute("dep") %>"></td>
+    			<td><input type="text" name="txtStaDe"></td>
     		</tr>
     		<tr align="center">
-    			<td>备注</td>
-    			<td><input type="text" name="txtDepRe" value="<%=request.getAttribute("depre") %>"></td>
+    			<td>工种</td>
+    			<td><input type="text" name="txtStaWTy"></td>
+    		</tr>
+    		<tr align="center">
+    			<td>学历</td>
+    			<td><input type="text" name="txtStaEd"></td>
+    		</tr>
+    		<tr align="center">
+    			<td>参加工作时间</td>
+    			<td><input type="text" name="txtStaWTm"></td>
     		</tr>
     	</table>
     	<br>
     	<br>
-    	<input type="submit" value="修改">
+    	<input type="submit" value="新增">
     	</form>
     	<br>
     	<hr>
-    	</center>  	
+    	</center>
   </body>
 </html>

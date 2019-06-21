@@ -19,12 +19,11 @@ public class AddDepSer extends HttpServlet {
 
 		Integer depid=Integer.parseInt(request.getParameter("txtDepId").trim());
 		String dep=request.getParameter("txtDep").trim();
-		String depct=request.getParameter("txtDepCt").trim();
 		String depre=request.getParameter("txtDepRe").trim();
 		
 		
 		DepartDao ddao=new DepartDao();
-		ddao.addDep(depid, dep, depct, depre);
+		ddao.addDep(depid, dep, depre);
 		
 		response.sendRedirect("department.jsp");
 	}

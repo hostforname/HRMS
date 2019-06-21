@@ -37,10 +37,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td><input type="text" name="txtDep"></td>
     		</tr>
     		<tr align="center">
-    			<td>创建时间</td>
-    			<td><input type="text" name="txtDepCt"></td>
-    		</tr>
-    		<tr align="center">
     			<td>备注</td>
     			<td><input type="text" name="txtDepRe"></td>
     		</tr>

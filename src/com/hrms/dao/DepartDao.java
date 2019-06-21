@@ -27,16 +27,15 @@ public class DepartDao {
 	 * @param depct
 	 * @param depre
 	 */
-	public void addDep(Integer depid, String dep, String depct, 
+	public void addDep(Integer depid, String dep,
 			String depre){
-		String sql="insert into hrdepartment values(?,?,?,?)";
+		String sql="insert into hrdepartment(departmentid,department,remarks) values(?,?,?)";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
 			pstat.setInt(1, depid);
 			pstat.setString(2, dep);
-			pstat.setString(3, depct);
-			pstat.setString(4, depre);
+			pstat.setString(3, depre);
 			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -73,15 +72,14 @@ public class DepartDao {
 	 * @param depct
 	 * @param depre
 	 */
-	public void updateDepById(Integer depid, String dep, String depct, String depre) {
-		String sql="update hrdepartment set department=?,createtime=?,remarks=? where departmentid=?";
+	public void updateDepById(Integer depid, String dep, String depre) {
+		String sql="update hrdepartment set department=?,remarks=? where departmentid=?";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
 			pstat.setString(1, dep);
-			pstat.setString(2, depct);
-			pstat.setString(3, depre);
-			pstat.setInt(4, depid);
+			pstat.setString(2, depre);
+			pstat.setInt(3, depid);
 			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();

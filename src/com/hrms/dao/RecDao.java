@@ -5,18 +5,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.hrms.bean.Staff;
+import com.hrms.bean.Recruit;
 import com.hrms.util.DateBaseUtil;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-public class StaDao {
+public class RecDao {
 	DateBaseUtil dbutil;
 	Connection conn=null;
 	PreparedStatement pstat=null;
 	ResultSet rs=null;
 	
-	public StaDao(){
+	public RecDao(){
 		dbutil=new DateBaseUtil();
 	}
 	
@@ -27,19 +27,19 @@ public class StaDao {
 	 * @param depct
 	 * @param depre
 	 */
-	public void addSta(Integer staid, String stana, String stase, String stade, 
-			String stawty, String staed, String stawtm){
-		String sql="insert into hrstaff values(?,?,?,?,?,?,?)";
+	public void addRec(Integer recruitid, String name, String sex, String recruittype, 
+			String education, String workexp, String delainfo){
+		String sql="insert into hrrecruit values(?,?,?,?,?,?,?)";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
-			pstat.setInt(1, staid);
-			pstat.setString(2, stana);
-			pstat.setString(3, stase);
-			pstat.setString(4, stade);
-			pstat.setString(5, stawty);
-			pstat.setString(6, staed);
-			pstat.setString(7, stawtm);
+			pstat.setInt(1, recruitid);
+			pstat.setString(2, name);
+			pstat.setString(3, sex);
+			pstat.setString(4, recruittype);
+			pstat.setString(5, education);
+			pstat.setString(6, workexp);
+			pstat.setString(7, delainfo);
 			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -52,47 +52,36 @@ public class StaDao {
 	 * getEmps() - 获取数据库表中所有员工信息
 	 * @return - ArrayList<Emp> emps
 	 */
-	public ArrayList<Staff> getStaff(){
-		ArrayList<Staff> stas=new ArrayList<Staff>();
-		Staff sta=null;
-		String sql="select * from hrstaff";
+	public ArrayList<Recruit> getRecruit(){
+		ArrayList<Recruit> recs=new ArrayList<Recruit>();
+		Recruit rec=null;
+		String sql="select * from hrrecruit";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
 			rs=pstat.executeQuery();
 			while(rs.next()){
-				sta=new Staff(rs.getInt("staffid"),rs.getString("staffname"),rs.getString("sex"),rs.getString("department")
-						,rs.getString("worktype"),rs.getString("education"),rs.getDate("worktime"));
-				stas.add(sta);
+				rec=new Recruit(rs.getInt("recruitid"),rs.getString("name"),rs.getString("sex"),rs.getString("recruittype")
+						,rs.getString("education"),rs.getString("workexp"),rs.getString("detainfo"),rs.getInt("status"));
+				recs.add(rec);
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return stas;
+		return recs;
 	}
 	/**
 	 * updateStaById() - 用于修改部门信息
 	 * @param staid
 	 * @param stana
-	 * @param stase
-	 * @param stade
-	 * @param stawtm 
-	 * @param staed 
-	 * @param stawty 
 	 */
-	public void updateStaById(Integer staid, String stana, String stase, String stade, 
-			String stawty, String staed, String stawtm) {
-		String sql="update hrstaff set staffname=?,sex=?,department=?,worktype=?,education=?,worktime=? where staffid=?";
+	public void updateRecById(Integer recruitid,Integer status) {
+		String sql="update hrrecruit set status=? where recruitid=?";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
-			pstat.setString(1, stana);
-			pstat.setString(2, stase);
-			pstat.setString(3, stade);
-			pstat.setString(4, stawty);
-			pstat.setString(5, staed);
-			pstat.setString(6, stawtm);
-			pstat.setInt(7, staid);
+			pstat.setInt(1, recruitid);
+			pstat.setInt(2, status);
 			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -105,12 +94,12 @@ public class StaDao {
 	 * removeDepById(Integer id) - 根据ID移除员工信息
 	 * @param id
 	 */
-	public void removeStaById(Integer staid){
-		String sql="delete from hrstaff where staffid=?";
+	public void removeRecById(Integer recruitid){
+		String sql="delete from hrrecruit where recruitid=?";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
-			pstat.setInt(1, staid);
+			pstat.setInt(1, recruitid);
 			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();

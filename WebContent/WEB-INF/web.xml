@@ -70,4 +70,59 @@
   	<servlet-name>UpdateStaSer</servlet-name>
   	<url-pattern>/UpdateStaSer</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>RemoveStaSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.RemoveStaSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RemoveStaSer</servlet-name>
+  	<url-pattern>/RemoveStaSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddStaSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.AddStaSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddStaSer</servlet-name>
+  	<url-pattern>/AddStaSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>TransferRecSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.TransferRecSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TransferRecSer</servlet-name>
+  	<url-pattern>/TransferSRecSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>UpdateRecSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.UpdateRecSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UpdateRecSer</servlet-name>
+  	<url-pattern>/UpdateRecSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>RemoveRecSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.RemoveRecSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RemoveRecSer</servlet-name>
+  	<url-pattern>/RemoveRecSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddRecSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.AddRecSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddRecSer</servlet-name>
+  	<url-pattern>/AddRecSer</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
