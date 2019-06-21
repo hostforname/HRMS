@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <welcome-file-list>
+    <welcome-file>login.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<servlet-class>com.hrms.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>TransferDepSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.TransferDepSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TransferDepSer</servlet-name>
+  	<url-pattern>/TransferDepSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>UpdateDepSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.UpdateDepSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UpdateDepSer</servlet-name>
+  	<url-pattern>/UpdateDepSer</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
