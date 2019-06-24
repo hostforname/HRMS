@@ -24,33 +24,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     	<center>
-    	<h2>添加应聘人信息</h2>
+    	<h2>添加培训信息</h2>
     	<hr>
-    	<form action="AddRecSer" method="post">
+    	<form action="AddTraSer" method="post">
     	<table border="1" cellspacing="0" width="300px">
     		<tr align="center">
-    			<td>姓名</td>
-    			<td><input type="text" name="txtRecNa"></td>
+    			<td>培训人</td>
+    			<td><input type="text" name="txtTraEr"></td>
     		</tr>
     		<tr align="center">
-    			<td>性别</td>
-    			<td><input type="text" name="txtRecSe"></td>
+    			<td>培训主题</td>
+    			<td><input type="text" name="txtTraTl"></td>
     		</tr>
     		<tr align="center">
-    			<td>应聘职位</td>
-    			<td><input type="text" name="txtRecTy"></td>
+    			<td>培训时间</td>
+    			<td><input type="text" name="txtTraTm"></td>
     		</tr>
     		<tr align="center">
-    			<td>学历</td>
-    			<td><input type="text" name="txtRecEd"></td>
-    		</tr>
-    		<tr align="center">
-    			<td>工作经验</td>
-    			<td><input type="text" name="txtRecWe"></td>
+    			<td>培训地点</td>
+    			<td><input type="text" name="txtTraAd"></td>
     		</tr>
     		<tr align="center">
     			<td>详细信息</td>
-    			<td><input type="text" name="txtRecDi"></td>
+    			<td><input type="text" name="txtTraDi"></td>
     		</tr>
     	</table>
     	<br>

@@ -51,19 +51,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td><%=rec.getEducation() %></td>
     			<td><%=rec.getWorkexp() %></td>
     			<td> 			
-					<a href="TransferRecSer?recid=<%=rec.getRecruitid()%>&recna=<%=rec.getName() %>&recse=<%=rec.getSex() %>&recty=<%=rec.getRecruittype() %>&reced=<%=rec.getEducation() %>&recwe=<%=rec.getWorkexp() %>">详细查询</a>
+					<a href="TransferRecSer?recid=<%=rec.getRecruitid()%>&recna=<%=rec.getName() %>&recse=<%=rec.getSex() %>&recty=<%=rec.getRecruittype() %>&reced=<%=rec.getEducation() %>&recwe=<%=rec.getWorkexp() %>&recdi=<%=rec.getDetainfo() %>&recst=<%=rec.getStatus() %>">详细查询</a>
 					&nbsp;&nbsp; 
-					<a href="RemoveRecSer?staid=<%=rec.getRecruitid()%>">删除</a>
+					<a href="RemoveRecSer?recid=<%=rec.getRecruitid()%>">删除</a>
 					&nbsp;&nbsp; 
 					<%
 						if(rec.getStatus()==0){					
 					%>						
-						<a href="UpdateRecSer?recid=<%=rec.getRecruitid()%>&">录用</a>
+						<a href="UpdateRecSer?recid=<%=rec.getRecruitid()%>&recst=<%=rec.getStatus() %>">录用</a>
 					<%
 						}
 						else {
 					%>
-						<a href="UpdateRecSer?recid=<%=rec.getRecruitid()%>">已录</a>	
+						<a href="UpdateRecSer?recid=<%=rec.getRecruitid()%>&recst=<%=rec.getStatus() %>">已录</a>	
 					<%
 						}
 					%>
@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</table>
     	<br>
     	<hr>
-    	<a href="addRecInfo.jsp">添加部门信息</a>
+    	<a href="addRecInfo.jsp">添加应聘人信息</a>
     	</center>
   </body>
 </html>

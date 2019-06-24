@@ -7,21 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hrms.dao.RecDao;
+import com.hrms.dao.TraDao;
 
-
-public class RemoveRecSer extends HttpServlet {
+public class RemoveTraSer extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer recid=Integer.parseInt(request.getParameter("recid"));
+		Integer traid=Integer.parseInt(request.getParameter("traid"));
 		
-		RecDao rdao=new RecDao();
-		rdao.removeRecById(recid);
+		TraDao tdao=new TraDao();
+		tdao.removeTraById(traid);
 		
-		response.sendRedirect("recruit.jsp");
+		response.sendRedirect("train.jsp");
 	}
 }

@@ -24,38 +24,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     	<center>
-    	<h2>添加应聘人信息</h2>
+    	<h2>招聘详细信息</h2>
     	<hr>
-    	<form action="AddRecSer" method="post">
+    	<form action="" method="post">
     	<table border="1" cellspacing="0" width="300px">
     		<tr align="center">
-    			<td>姓名</td>
-    			<td><input type="text" name="txtRecNa"></td>
+    			<td>编号</td>
+    			<td><%=request.getAttribute("traid") %></td>
+            </tr>
+            <tr align="center">
+    			<td>培训人</td>
+    			<td><%=request.getAttribute("traer") %></td>
     		</tr>
-    		<tr align="center">
-    			<td>性别</td>
-    			<td><input type="text" name="txtRecSe"></td>
+            <tr align="center">
+    			<td>培训主题</td>
+    			<td><%=request.getAttribute("tratl") %></td>
     		</tr>
-    		<tr align="center">
-    			<td>应聘职位</td>
-    			<td><input type="text" name="txtRecTy"></td>
+            <tr align="center">
+    			<td>培训时间</td>
+    			<td><%=request.getAttribute("tratm") %></td>
     		</tr>
-    		<tr align="center">
-    			<td>学历</td>
-    			<td><input type="text" name="txtRecEd"></td>
+            <tr align="center">
+    			<td>培训地点</td>
+    			<td><%=request.getAttribute("traad") %></td>
     		</tr>
-    		<tr align="center">
-    			<td>工作经验</td>
-    			<td><input type="text" name="txtRecWe"></td>
-    		</tr>
-    		<tr align="center">
+            <tr align="center">
     			<td>详细信息</td>
-    			<td><input type="text" name="txtRecDi"></td>
-    		</tr>
+    			<td><%=request.getAttribute("tradi") %></td>
+    		</tr>       
     	</table>
-    	<br>
-    	<br>
-    	<input type="submit" value="新增">
     	</form>
     	<br>
     	<hr>

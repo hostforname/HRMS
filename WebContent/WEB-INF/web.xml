@@ -95,7 +95,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>TransferRecSer</servlet-name>
-  	<url-pattern>/TransferSRecSer</url-pattern>
+  	<url-pattern>/TransferRecSer</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -125,4 +125,30 @@
   	<url-pattern>/AddRecSer</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>TransferTraSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.TransferTraSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TransferTraSer</servlet-name>
+  	<url-pattern>/TransferTraSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>RemoveTraSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.RemoveTraSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RemoveTraSer</servlet-name>
+  	<url-pattern>/RemoveTraSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddTraSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.AddTraSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddTraSer</servlet-name>
+  	<url-pattern>/AddTraSer</url-pattern>
+  </servlet-mapping>
 </web-app>

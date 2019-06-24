@@ -27,19 +27,18 @@ public class RecDao {
 	 * @param depct
 	 * @param depre
 	 */
-	public void addRec(Integer recruitid, String name, String sex, String recruittype, 
-			String education, String workexp, String delainfo){
-		String sql="insert into hrrecruit values(?,?,?,?,?,?,?)";
+	public void addRec( String name, String sex, String recruittype, 
+			String education, String workexp, String detainfo){
+		String sql="insert into hrrecruit(name,sex,recruittype,education,workexp,detainfo) values(?,?,?,?,?,?)";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
-			pstat.setInt(1, recruitid);
-			pstat.setString(2, name);
-			pstat.setString(3, sex);
-			pstat.setString(4, recruittype);
-			pstat.setString(5, education);
-			pstat.setString(6, workexp);
-			pstat.setString(7, delainfo);
+			pstat.setString(1, name);
+			pstat.setString(2, sex);
+			pstat.setString(3, recruittype);
+			pstat.setString(4, education);
+			pstat.setString(5, workexp);
+			pstat.setString(6, detainfo);
 			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -80,8 +79,12 @@ public class RecDao {
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
-			pstat.setInt(1, recruitid);
-			pstat.setInt(2, status);
+			if(status==0) {
+				pstat.setInt(1, 1);
+			} else {
+				pstat.setInt(1, 0);
+			}
+			pstat.setInt(2, recruitid);
 			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
