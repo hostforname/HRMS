@@ -178,4 +178,49 @@
   	<servlet-name>AddRewSer</servlet-name>
   	<url-pattern>/AddRewSer</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>RemoveSalSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.RemoveSalSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RemoveSalSer</servlet-name>
+  	<url-pattern>/RemoveSalSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddSalSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.AddSalSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddSalSer</servlet-name>
+  	<url-pattern>/AddSalSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>RemoveUserSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.RemoveUserSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RemoveUserSer</servlet-name>
+  	<url-pattern>/RemoveUserSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddUserSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.AddUserSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddUserSer</servlet-name>
+  	<url-pattern>/AddUserSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>UpdateUserSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.UpdateUserSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UpdateUserSer</servlet-name>
+  	<url-pattern>/UpdateUserSer</url-pattern>
+  </servlet-mapping>
 </web-app>

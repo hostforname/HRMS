@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		//System.out.println("23");
 		UserDao udao=new UserDao();
 		if(udao.isLogin(name, password)){
-			request.setAttribute("uname", name);
+			request.setAttribute("name", name);
 			request.getRequestDispatcher("hrmshome.jsp").forward(request, response);
 		}else{
 			response.sendRedirect("loginerror.html");

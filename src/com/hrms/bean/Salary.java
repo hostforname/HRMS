@@ -1,10 +1,14 @@
 package com.hrms.bean;
 
+import java.util.Date;
+
 public class Salary {
 	//员工编号
 	private Integer staffid;
 	//员工姓名
 	private String staffname;
+	//当前月份
+	private String curmonth;
 	//基本工资
 	private Integer basepay;
 	//加班费
@@ -19,11 +23,12 @@ public class Salary {
 	private Integer inspay;
 	
 	
-	public Salary(Integer staffid, String staffname, Integer basepay, Integer overtimepay, Integer duration,
+	public Salary(Integer staffid, String staffname,String curmonth, Integer basepay, Integer overtimepay, Integer duration,
 			Integer attpay, Integer abspay, Integer inspay) {
 		super();
 		this.staffid = staffid;
 		this.staffname = staffname;
+		this.curmonth = curmonth;
 		this.basepay = basepay;
 		this.overtimepay = overtimepay;
 		this.duration = duration;
@@ -36,6 +41,9 @@ public class Salary {
 	}
 	public String getStaffname() {
 		return staffname;
+	}	
+	public String getCurmonth() {
+		return curmonth;
 	}
 	public Integer getBasepay() {
 		return basepay;

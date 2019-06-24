@@ -47,12 +47,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a href="salary.jsp" target="ifrpage">薪酬管理</a>
 					</th>
 					<th>
-						<a href="system.jsp" target="ifrpage">系统管理</a>
+						<a href="user.jsp" target="ifrpage">系统管理</a>
 					</th>
 				</tr>
-					
+				<tr>
+					<td>
+						<a href="updateUser.jsp?name=<%=request.getAttribute("name") %>" target="ifrpage">用户修改</a>
+					</td>
+					<td>
+						<a href="home.jsp" target="ifrpage">返回首页</a>
+					</td>
+					<td>
+						<a href="login.html">安全退出</a>
+					</td>
+				</tr>
+							
 			</table>
-			<iframe id="ifrpage" name="ifrpage" src="" width="100%" height="80%"></iframe>
+			<iframe src="home.jsp" id="ifrpage" name="ifrpage" src="" width="100%" height="80%">
+			</iframe>
 		</center>
 		
     	
