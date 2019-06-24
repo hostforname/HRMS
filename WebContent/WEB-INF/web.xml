@@ -151,4 +151,31 @@
   	<servlet-name>AddTraSer</servlet-name>
   	<url-pattern>/AddTraSer</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+  	<servlet-name>TransferRewSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.TransferRewSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TransferRewSer</servlet-name>
+  	<url-pattern>/TransferRewSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>RemoveRewSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.RemoveRewSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RemoveRewSer</servlet-name>
+  	<url-pattern>/RemoveRewSer</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>AddRewSer</servlet-name>
+  	<servlet-class>com.hrms.servlet.AddRewSer</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AddRewSer</servlet-name>
+  	<url-pattern>/AddRewSer</url-pattern>
+  </servlet-mapping>
 </web-app>

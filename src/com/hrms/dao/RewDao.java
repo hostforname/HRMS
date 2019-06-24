@@ -4,19 +4,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.hrms.bean.Staff;
-import com.hrms.bean.Train;
+import com.hrms.bean.Rewpun;
 import com.hrms.util.DateBaseUtil;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-public class TraDao {
+public class RewDao {
 	DateBaseUtil dbutil;
 	Connection conn=null;
 	PreparedStatement pstat=null;
 	ResultSet rs=null;
 	
-	public TraDao(){
+	public RewDao(){
 		dbutil=new DateBaseUtil();
 	}
 	
@@ -27,17 +26,16 @@ public class TraDao {
 	 * @param depct
 	 * @param depre
 	 */
-	public void addTra(String traer, String tratl, String tratm, 
-			String traad, String tradi){
-		String sql="insert into hrtrain(trainer,traintitle,traintime,trainaddr,detainfo) values(?,?,?,?,?)";
+	public void addRew(String rewtl, Integer rewty, Integer rewmo, 
+			String rewdi){
+		String sql="insert into hrrewpun(rewpuntitle,rewpuntype,rewpunmount,detainfo) values(?,?,?,?)";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
-			pstat.setString(1, traer);
-			pstat.setString(2, tratl);
-			pstat.setString(3, tratm);
-			pstat.setString(4, traad);
-			pstat.setString(5, tradi);
+			pstat.setString(1, rewtl);
+			pstat.setInt(2, rewty);
+			pstat.setInt(3, rewmo);
+			pstat.setString(4, rewdi);
 			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -50,23 +48,23 @@ public class TraDao {
 	 * getEmps() - 获取数据库表中所有员工信息
 	 * @return - ArrayList<Emp> emps
 	 */
-	public ArrayList<Train> getTrain(){
-		ArrayList<Train> tras=new ArrayList<Train>();
-		Train tra=null;
-		String sql="select * from hrtrain";
+	public ArrayList<Rewpun> getRewpun(){
+		ArrayList<Rewpun> rews=new ArrayList<Rewpun>();
+		Rewpun rew=null;
+		String sql="select * from hrrewpun";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
 			rs=pstat.executeQuery();
 			while(rs.next()){
-				tra=new Train(rs.getInt("trainid"),rs.getString("trainer"),rs.getString("traintitle"),rs.getDate("traintime")
-						,rs.getString("trainaddr"),rs.getString("detainfo"));
-				tras.add(tra);
+				rew=new Rewpun(rs.getInt("rewpunid"),rs.getString("rewpuntitle"),rs.getInt("rewpuntype"),rs.getInt("rewpunmount")
+						,rs.getDate("rewpuntime"),rs.getString("detainfo"));
+				rews.add(rew);
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return tras;
+		return rews;
 	}
 	/**
 	 * updateStaById() - 用于修改部门信息
@@ -104,12 +102,12 @@ public class TraDao {
 	 * removeDepById(Integer id) - 根据ID移除员工信息
 	 * @param id
 	 */
-	public void removeTraById(Integer traid){
-		String sql="delete from hrtrain where trainid=?";
+	public void removeRewById(Integer rewid){
+		String sql="delete from hrrewpun where rewpunid=?";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
-			pstat.setInt(1, traid);
+			pstat.setInt(1, rewid);
 			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
