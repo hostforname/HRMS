@@ -63,6 +63,8 @@ public class RewDao {
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
+		}finally{
+			dbutil.closeConnection(conn, pstat,rs);
 		}
 		return rews;
 	}

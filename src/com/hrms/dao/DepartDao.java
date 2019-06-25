@@ -27,15 +27,14 @@ public class DepartDao {
 	 * @param depct
 	 * @param depre
 	 */
-	public void addDep(Integer depid, String dep,
+	public void addDep(String dep,
 			String depre){
-		String sql="insert into hrdepartment(departmentid,department,remarks) values(?,?,?)";
+		String sql="insert into hrdepartment(department,remarks) values(?,?)";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
-			pstat.setInt(1, depid);
-			pstat.setString(2, dep);
-			pstat.setString(3, depre);
+			pstat.setString(1, dep);
+			pstat.setString(2, depre);
 			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -62,6 +61,8 @@ public class DepartDao {
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
+		}finally{
+			dbutil.closeConnection(conn, pstat,rs);
 		}
 		return departs;
 	}
@@ -104,6 +105,26 @@ public class DepartDao {
 		}finally{
 			dbutil.closeConnection(conn, pstat);
 		}
+	}
+	
+	public Integer getNums(String department) {
+		String sql="select count(*) as nums from hrstaff where department=?";
+		conn=dbutil.getConnection();
+		Integer nums=0;
+		try{
+			pstat=(PreparedStatement) conn.prepareStatement(sql);
+			pstat.setString(1, department);
+			rs=pstat.executeQuery();
+			//从rs结果集中取值之前，要先判断到底有没有查到记录
+			if(rs.next()) {
+				nums=rs.getInt("nums");
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			dbutil.closeConnection(conn, pstat,rs);
+		}
+		return nums;
 	}
 
 }

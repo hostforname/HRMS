@@ -9,10 +9,12 @@ public class Department {
 	private String department;
 	//创建时间
 	private Date createtime;
+	//
+	private Integer nums;
 	//备注
 	private String remarks;
 	
-	public Department(Integer departmentid, String department, Date createtime, String remarks) {
+	public Department(Integer departmentid, String department, Date createtime,String remarks) {
 		super();
 		this.departmentid = departmentid;
 		this.department = department;
@@ -32,6 +34,10 @@ public class Department {
 		return createtime;
 	}
 	
+	public Integer getNums() {
+		return nums;
+	}
+
 	public String getRemarks() {
 		return remarks;
 	}

@@ -33,6 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td>序号</td>
     			<td>部门名称</td>
     			<td>创建时间</td>
+    			<td>部门人数</td>
     			<td>备注</td>
     			<td>操作</td>
     		</tr>
@@ -45,6 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td><%=depart.getDepartmentid() %></td>
     			<td><%=depart.getDepartment() %></td>
     			<td><%=depart.getCreatetime() %></td>
+    			<td><%=ddao.getNums(depart.getDepartment()) %></td>
     			<td><%=depart.getRemarks() %></td>
     			<td>
     			<!-- 

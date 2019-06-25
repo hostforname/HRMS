@@ -66,6 +66,8 @@ public class RecDao {
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
+		}finally{
+			dbutil.closeConnection(conn, pstat,rs);
 		}
 		return recs;
 	}

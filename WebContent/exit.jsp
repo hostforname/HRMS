@@ -24,25 +24,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     	<center>
-    	<h2>添加部门信息</h2>
-    	<hr>
-    	<form action="AddDepSer" method="post">
-    	<table border="1" cellspacing="0" width="300px">
-    		<tr align="center">
-    			<td>部门名称</td>
-    			<td><input type="text" name="txtDep"></td>
-    		</tr>
-    		<tr align="center">
-    			<td>备注</td>
-    			<td><input type="text" name="txtDepRe"></td>
-    		</tr>
-    	</table>
-    	<br>
-    	<br>
-    	<input type="submit" value="新增">
-    	</form>
-    	<br>
-    	<hr>
+    		<%
+				Cookie killMyCookie = new Cookie("mycookie", null);
+				killMyCookie.setMaxAge(0);
+				killMyCookie.setPath("/");
+				response.addCookie(killMyCookie);
+			%>
     	</center>
   </body>
 </html>

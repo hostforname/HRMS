@@ -68,6 +68,8 @@ public class SalDao {
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
+		}finally{
+			dbutil.closeConnection(conn, pstat,rs);
 		}
 		return sals;
 	}

@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a href="home.jsp" target="ifrpage">返回首页</a>
 					</td>
 					<td>
-						<a href="login.html">安全退出</a>
+						<a href="login.html" >安全退出</a>
 					</td>
 				</tr>
 							
