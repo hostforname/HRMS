@@ -28,6 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<center>
     	<h2>&nbsp;应聘信息</h2>
     	<hr>
+    	<%String recru=null; %>
+    	<a href="recruit.jsp?recru=1">录用查询</a>
+    	&nbsp;&nbsp;<a href="recruit.jsp?recru=0">未录用查询</a>
     	<table border="1" cellspacing="0" width="800px">
     		<tr align="center">
     			<td>编号</td>
@@ -38,38 +41,76 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td>工作经验</td>
     			<td>操作</td>
     		</tr>
-    		<%
+    		<%	
+    			recru=request.getParameter("recru");
     			RecDao rdao=new RecDao();
     			ArrayList<Recruit> recs=rdao.getRecruit();
-    			for(Recruit rec:recs){
+    			if(recru!=null){
+    				//这里recru不能在if外进行强制类型转换，因为recru可能等于null，不能进行强制类型转换
+    				Integer x=Integer.parseInt(recru);
+    				for(Recruit rec:recs){
+    					if(rec.getStatus()==x){   						
     		%>
-    		<tr align="center">
-    			<td><%=rec.getRecruitid() %></td>
-    			<td><%=rec.getName() %></td>
-    			<td><%=rec.getSex() %></td>
-    			<td><%=rec.getRecruittype() %></td>
-    			<td><%=rec.getEducation() %></td>
-    			<td><%=rec.getWorkexp() %></td>
-    			<td> 			
-					<a href="TransferRecSer?recid=<%=rec.getRecruitid()%>&recna=<%=rec.getName() %>&recse=<%=rec.getSex() %>&recty=<%=rec.getRecruittype() %>&reced=<%=rec.getEducation() %>&recwe=<%=rec.getWorkexp() %>&recdi=<%=rec.getDetainfo() %>&recst=<%=rec.getStatus() %>">详细查询</a>
-					&nbsp;&nbsp; 
-					<a href="RemoveRecSer?recid=<%=rec.getRecruitid()%>">删除</a>
-					&nbsp;&nbsp; 
-					<%
-						if(rec.getStatus()==0){					
-					%>						
-						<a href="UpdateRecSer?recid=<%=rec.getRecruitid()%>&recst=<%=rec.getStatus() %>">录用</a>
-					<%
-						}
-						else {
-					%>
-						<a href="UpdateRecSer?recid=<%=rec.getRecruitid()%>&recst=<%=rec.getStatus() %>">已录</a>	
-					<%
-						}
-					%>
-				</td>
-    		</tr>
+    						<tr align="center">
+				    			<td><%=rec.getRecruitid() %></td>
+				    			<td><%=rec.getName() %></td>
+				    			<td><%=rec.getSex() %></td>
+				    			<td><%=rec.getRecruittype() %></td>
+				    			<td><%=rec.getEducation() %></td>
+				    			<td><%=rec.getWorkexp() %></td>
+				    			<td> 			
+									<a href="TransferRecSer?recid=<%=rec.getRecruitid()%>&recna=<%=rec.getName() %>&recse=<%=rec.getSex() %>&recty=<%=rec.getRecruittype() %>&reced=<%=rec.getEducation() %>&recwe=<%=rec.getWorkexp() %>&recdi=<%=rec.getDetainfo() %>&recst=<%=rec.getStatus() %>">详细查询</a>
+									&nbsp;&nbsp; 
+									<a href="RemoveRecSer?recid=<%=rec.getRecruitid()%>">删除</a>
+									&nbsp;&nbsp; 
+									<%
+										if(rec.getStatus()==0){					
+									%>						
+										<a href="UpdateRecSer?recid=<%=rec.getRecruitid()%>&recst=<%=rec.getStatus() %>">录用</a>
+									<%
+										}
+										else {
+									%>
+										<a href="UpdateRecSer?recid=<%=rec.getRecruitid()%>&recst=<%=rec.getStatus() %>">已录</a>	
+									<%
+										}
+									%>
+								</td>
+				    		</tr>	
     		<%
+    					}
+    				}
+    			}else{
+    				for(Recruit rec:recs){
+    		%>
+    				<tr align="center">
+				    			<td><%=rec.getRecruitid() %></td>
+				    			<td><%=rec.getName() %></td>
+				    			<td><%=rec.getSex() %></td>
+				    			<td><%=rec.getRecruittype() %></td>
+				    			<td><%=rec.getEducation() %></td>
+				    			<td><%=rec.getWorkexp() %></td>
+				    			<td> 			
+									<a href="TransferRecSer?recid=<%=rec.getRecruitid()%>&recna=<%=rec.getName() %>&recse=<%=rec.getSex() %>&recty=<%=rec.getRecruittype() %>&reced=<%=rec.getEducation() %>&recwe=<%=rec.getWorkexp() %>&recdi=<%=rec.getDetainfo() %>&recst=<%=rec.getStatus() %>">详细查询</a>
+									&nbsp;&nbsp; 
+									<a href="RemoveRecSer?recid=<%=rec.getRecruitid()%>">删除</a>
+									&nbsp;&nbsp; 
+									<%
+										if(rec.getStatus()==0){					
+									%>						
+										<a href="UpdateRecSer?recid=<%=rec.getRecruitid()%>&recst=<%=rec.getStatus() %>">录用</a>
+									<%
+										}
+										else {
+									%>
+										<a href="UpdateRecSer?recid=<%=rec.getRecruitid()%>&recst=<%=rec.getStatus() %>">已录</a>	
+									<%
+										}
+									%>
+								</td>
+				    		</tr>	
+    		<%
+    				}
     			}
     		%>
     	</table>

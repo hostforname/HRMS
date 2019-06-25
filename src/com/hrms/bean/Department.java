@@ -21,6 +21,11 @@ public class Department {
 		this.createtime = createtime;
 		this.remarks = remarks;
 	}
+	
+	public Department(String department) {
+		super();
+		this.department = department;		
+	}
 
 	public Integer getDepartmentid() {
 		return departmentid;

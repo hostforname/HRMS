@@ -66,6 +66,26 @@ public class DepartDao {
 		}
 		return departs;
 	}
+	
+	public ArrayList<Department> getDepart(){
+		ArrayList<Department> departs=new ArrayList<Department>();
+		Department depart=null;
+		String sql="select department from hrdepartment";
+		conn=dbutil.getConnection();
+		try{
+			pstat=(PreparedStatement) conn.prepareStatement(sql);
+			rs=pstat.executeQuery();
+			while(rs.next()){
+				depart=new Department(rs.getString("department"));
+				departs.add(depart);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			dbutil.closeConnection(conn, pstat,rs);
+		}
+		return departs;
+	}
 	/**
 	 * updateDepById() - 用于修改部门信息
 	 * @param depid

@@ -28,6 +28,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<center>
     	<h2>&nbsp;奖惩信息</h2>
     	<hr>
+    	<%
+    		String type=null;
+    	%>
+    	<a href="rewpun.jsp?type=1">奖励</a>
+    	&nbsp;&nbsp;<a href="rewpun.jsp?type=0">惩罚</a>
     	<table border="1" cellspacing="0" width="800px">
     		<tr align="center">
     			<td>编号</td>
@@ -38,36 +43,73 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td>操作</td>
     		</tr>
     		<%
+    			type=request.getParameter("type");
     			RewDao rdao=new RewDao();
     			ArrayList<Rewpun> rews=rdao.getRewpun();
-    			for(Rewpun rew:rews){
+    			
+    			if(type!=null){
+    				Integer x=Integer.parseInt(type);
+    				for(Rewpun rew:rews){
+    					if(rew.getRewpuntype()==x){
     		%>
-    		<tr align="center">
-    			<td><%=rew.getRewpunid() %></td>
-    			<td><%=rew.getRewpuntitle() %></td>
-    			<td>
-    				<%
-    					if(rew.getRewpuntype()==0) {	   				
-    				%>						
-						惩罚
-					<%
-						}
-						else {
-					%>
-						奖励
-					<%
-						}
-					%>
-    			</td>
-    			<td><%=rew.getRewpunmount() %></td>
-    			<td><%=rew.getRewpuntime() %></td>
-    			<td> 			
-					<a href="TransferRewSer?rewid=<%=rew.getRewpunid() %>&rewtl=<%=rew.getRewpuntitle() %>&rewty=<%=rew.getRewpuntype() %>&rewmo=<%=rew.getRewpunmount() %>&rewtm=<%=rew.getRewpuntime() %>&rewdi=<%=rew.getDetainfo() %>">详细查询</a>
-					&nbsp;&nbsp; 
-					<a href="RemoveRewSer?rewid=<%=rew.getRewpunid()%>">删除</a>
-				</td>
-    		</tr>
+    						<tr align="center">
+				    			<td><%=rew.getRewpunid() %></td>
+				    			<td><%=rew.getRewpuntitle() %></td>
+				    			<td>
+				    				<%
+				    					if(rew.getRewpuntype()==0) {	   				
+				    				%>						
+										惩罚
+									<%
+										}
+										else {
+									%>
+										奖励
+									<%
+										}
+									%>
+				    			</td>
+				    			<td><%=rew.getRewpunmount() %></td>
+				    			<td><%=rew.getRewpuntime() %></td>
+				    			<td> 			
+									<a href="TransferRewSer?rewid=<%=rew.getRewpunid() %>&rewtl=<%=rew.getRewpuntitle() %>&rewty=<%=rew.getRewpuntype() %>&rewmo=<%=rew.getRewpunmount() %>&rewtm=<%=rew.getRewpuntime() %>&rewdi=<%=rew.getDetainfo() %>">详细查询</a>
+									&nbsp;&nbsp; 
+									<a href="RemoveRewSer?rewid=<%=rew.getRewpunid()%>">删除</a>
+								</td>
+				    		</tr>
     		<%
+    					}
+    				}
+    			}else{
+    				for(Rewpun rew:rews){  			
+    		%>
+    					<tr align="center">
+				    			<td><%=rew.getRewpunid() %></td>
+				    			<td><%=rew.getRewpuntitle() %></td>
+				    			<td>
+				    				<%
+				    					if(rew.getRewpuntype()==0) {	   				
+				    				%>						
+										惩罚
+									<%
+										}
+										else {
+									%>
+										奖励
+									<%
+										}
+									%>
+				    			</td>
+				    			<td><%=rew.getRewpunmount() %></td>
+				    			<td><%=rew.getRewpuntime() %></td>
+				    			<td> 			
+									<a href="TransferRewSer?rewid=<%=rew.getRewpunid() %>&rewtl=<%=rew.getRewpuntitle() %>&rewty=<%=rew.getRewpuntype() %>&rewmo=<%=rew.getRewpunmount() %>&rewtm=<%=rew.getRewpuntime() %>&rewdi=<%=rew.getDetainfo() %>">详细查询</a>
+									&nbsp;&nbsp; 
+									<a href="RemoveRewSer?rewid=<%=rew.getRewpunid()%>">删除</a>
+								</td>
+				    		</tr>
+    		<%
+    				}
     			}
     		%>
     	</table>
