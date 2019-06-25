@@ -10,7 +10,7 @@ public class Staff {
 	//性别
 	private String sex;
 	//部门
-	private String departmeng;
+	private String department;
 	//工种
 	private String worktype;
 	//学历
@@ -19,13 +19,13 @@ public class Staff {
 	private Date worktime;
 	
 	
-	public Staff(Integer staffid, String staffname, String sex, String departmeng, String worktype, String education,
+	public Staff(Integer staffid, String staffname, String sex, String department, String worktype, String education,
 			Date worktime) {
 		super();
 		this.staffid = staffid;
 		this.staffname = staffname;
 		this.sex = sex;
-		this.departmeng = departmeng;
+		this.department = department;
 		this.worktype = worktype;
 		this.education = education;
 		this.worktime = worktime;
@@ -43,8 +43,8 @@ public class Staff {
 		return sex;
 	}
 	
-	public String getDepartmeng() {
-		return departmeng;
+	public String getDepartment() {
+		return department;
 	}
 	
 	public String getWorktype() {

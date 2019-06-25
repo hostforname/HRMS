@@ -48,12 +48,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			<td><%=sta.getStaffid() %></td>
     			<td><%=sta.getStaffname() %></td>
     			<td><%=sta.getSex() %></td>
-    			<td><%=sta.getDepartmeng() %></td>
+    			<td><%=sta.getDepartment() %></td>
     			<td><%=sta.getWorktype() %></td>
     			<td><%=sta.getEducation() %></td>
     			<td><%=sta.getWorktime() %></td>
-    			<td> 			
-					<a href="TransferStaSer?staid=<%=sta.getStaffid()%>&stana=<%=sta.getStaffname() %>&stase=<%=sta.getSex() %>&stade=<%=sta.getDepartmeng() %>&stawty=<%=sta.getWorktype() %>&staed=<%=sta.getEducation() %>&stawtm=<%=sta.getWorktime() %>">修改</a>
+    			<td>
+    				<%//这里的部门传值的时候涉及到一个url传值时特殊符号需要进行替换，如果不替换后面的值就取不到了 %> 			
+					<a href="TransferStaSer?staid=<%=sta.getStaffid()%>&stana=<%=sta.getStaffname() %>&stase=<%=sta.getSex() %>
+					&stade=<%=sta.getDepartment().replace("#", "%23") %>&stawty=<%=sta.getWorktype() %>
+					&staed=<%=sta.getEducation() %>&stawtm=<%=sta.getWorktime() %>">修改</a>
 					&nbsp;&nbsp; 
 					<a href="RemoveStaSer?staid=<%=sta.getStaffid()%>">删除</a>				
 				</td>
