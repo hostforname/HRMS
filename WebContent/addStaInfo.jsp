@@ -29,10 +29,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<form action="AddStaSer" method="post">
     	<table border="1" cellspacing="0" width="300px">
     		<tr align="center">
-    			<td>员工编号</td>
-    			<td><input type="text" name="txtStaId"></td>
-    		</tr>
-    		<tr align="center">
     			<td>姓名</td>
     			<td><input type="text" name="txtStaNa"></td>
     		</tr>
@@ -58,6 +54,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</tr>
     	</table>
     	<br>
+    	<%	String error=null;
+    		error=request.getParameter("error");
+    		if(error!=null){ 
+    	%>
+    		每一项都不能为空
+    	<%
+    		} 
+    	%>
     	<br>
     	<input type="submit" value="新增">
     	</form>

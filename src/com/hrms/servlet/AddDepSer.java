@@ -16,14 +16,17 @@ public class AddDepSer extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
-		String dep=request.getParameter("txtDep").trim();
-		String depre=request.getParameter("txtDepRe").trim();
-		
-		
-		DepartDao ddao=new DepartDao();
-		ddao.addDep(dep, depre);
-		
-		response.sendRedirect("department.jsp");
+		if(request.getParameter("txtDep")=="") {
+			//System.out.println("1");
+			response.sendRedirect("addDepInfo.jsp?error=nonull");
+		}else {
+			String dep=request.getParameter("txtDep").trim();
+			String depre=request.getParameter("txtDepRe").trim();
+						
+			DepartDao ddao=new DepartDao();
+			ddao.addDep(dep, depre);
+			
+			response.sendRedirect("department.jsp");
+		}	
 	}
 }

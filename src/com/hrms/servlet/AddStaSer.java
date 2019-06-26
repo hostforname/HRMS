@@ -16,19 +16,25 @@ public class AddStaSer extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
-		Integer staid=Integer.parseInt(request.getParameter("txtStaId").trim());
-		String stana=request.getParameter("txtStaNa").trim();
-		String stase=request.getParameter("txtStaSe").trim();
-		String stade=request.getParameter("txtStaDe").trim();
-		String stawty=request.getParameter("txtStaWTy").trim();
-		String staed=request.getParameter("txtStaEd").trim();
-		String stawtm=request.getParameter("txtStaWTm").trim();
+		if(request.getParameter("txtStaNa")==""||request.getParameter("txtStaSe")==""||
+				request.getParameter("txtStaDe")==""||request.getParameter("txtStaWTy")==""||
+				request.getParameter("txtStaEd")==""||request.getParameter("txtStaWTm")=="") {
+			response.sendRedirect("addStaInfo.jsp?error=nonull");
+		}else {
+			
+			String stana=request.getParameter("txtStaNa").trim();
+			String stase=request.getParameter("txtStaSe").trim();
+			String stade=request.getParameter("txtStaDe").trim();
+			String stawty=request.getParameter("txtStaWTy").trim();
+			String staed=request.getParameter("txtStaEd").trim();
+			String stawtm=request.getParameter("txtStaWTm").trim();
+			
+			
+			StaDao sdao=new StaDao();
+			sdao.addSta(stana,stase,stade,stawty,staed,stawtm);
+			
+			response.sendRedirect("staff.jsp");
+		}
 		
-		
-		StaDao sdao=new StaDao();
-		sdao.addSta(staid,stana,stase,stade,stawty,staed,stawtm);
-		
-		response.sendRedirect("staff.jsp");
 	}
 }

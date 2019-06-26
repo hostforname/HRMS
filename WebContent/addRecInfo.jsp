@@ -54,6 +54,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</tr>
     	</table>
     	<br>
+    	<%	String error=null;
+    		error=request.getParameter("error");
+    		if(error!=null){ 
+    	%>
+    		每一项都不能为空
+    	<%
+    		} 
+    	%>
     	<br>
     	<input type="submit" value="新增">
     	</form>

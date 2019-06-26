@@ -23,10 +23,13 @@ public class AddRecSer extends HttpServlet {
 		String reced=request.getParameter("txtRecEd").trim();
 		String recwe=request.getParameter("txtRecWe").trim();
 		String recdi=request.getParameter("txtRecDi").trim();		
-		
-		RecDao rdao=new RecDao();
-		rdao.addRec(recna,recse,recty,reced,recwe,recdi);
-		
-		response.sendRedirect("recruit.jsp");
+		if(recna==""||recse==""||recty==""||reced==""||recwe=="") {
+			response.sendRedirect("addRecInfo.jsp?error=nonull");
+		}else {
+			RecDao rdao=new RecDao();
+			rdao.addRec(recna,recse,recty,reced,recwe,recdi);
+			
+			response.sendRedirect("recruit.jsp");		
+		}
 	}
 }

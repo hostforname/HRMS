@@ -19,10 +19,15 @@ public class AddUserSer extends HttpServlet {
 		
 		String usena=request.getParameter("txtUseNa").trim();
 		String usepwd=request.getParameter("txtUsePwd").trim();
+		if(usena==""||usepwd=="") {
+			response.sendRedirect("addUser.jsp?error=nonull");
+		}else {
 
-		UserDao udao=new UserDao();
-		udao.addUser(usena,usepwd);
+			UserDao udao=new UserDao();
+			udao.addUser(usena,usepwd);
+			
+			response.sendRedirect("user.jsp");
 		
-		response.sendRedirect("user.jsp");
+		}
 	}
 }

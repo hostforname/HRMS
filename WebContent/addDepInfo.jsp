@@ -26,7 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<center>
     	<h2>添加部门信息</h2>
     	<hr>
+    	
     	<form action="AddDepSer" method="post">
+    	
     	<table border="1" cellspacing="0" width="300px">
     		<tr align="center">
     			<td>部门名称</td>
@@ -38,6 +40,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</tr>
     	</table>
     	<br>
+    	<%	//对文本框里的值进行判断，判断是否有数据
+    		String error=null;
+    		error=request.getParameter("error");
+    		//System.out.println(error);
+    		if(error!=null){ 
+    	%>
+    		部门名称不能为空
+    	<%
+    		} 
+    	%>
     	<br>
     	<input type="submit" value="新增">
     	</form>

@@ -22,10 +22,13 @@ public class AddTraSer extends HttpServlet {
 		String tratm=request.getParameter("txtTraTm").trim();
 		String traad=request.getParameter("txtTraAd").trim();
 		String tradi=request.getParameter("txtTraDi").trim();		
-		
-		TraDao tdao=new TraDao();
-		tdao.addTra(traer,tratl,tratm,traad,tradi);
-		
-		response.sendRedirect("train.jsp");
+		if(traer==""||tratl==""||tratm==""||traad=="") {
+			response.sendRedirect("addTraInfo.jsp?error=nonull");
+		}else {
+			TraDao tdao=new TraDao();
+			tdao.addTra(traer,tratl,tratm,traad,tradi);
+			
+			response.sendRedirect("train.jsp");
+		}
 	}
 }

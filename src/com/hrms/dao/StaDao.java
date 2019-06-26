@@ -27,19 +27,18 @@ public class StaDao {
 	 * @param depct
 	 * @param depre
 	 */
-	public void addSta(Integer staid, String stana, String stase, String stade, 
+	public void addSta(String stana, String stase, String stade, 
 			String stawty, String staed, String stawtm){
-		String sql="insert into hrstaff values(?,?,?,?,?,?,?)";
+		String sql="insert into hrstaff(staffname,sex,department,worktype,education,worktime) values(?,?,?,?,?,?)";
 		conn=dbutil.getConnection();
 		try{
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
-			pstat.setInt(1, staid);
-			pstat.setString(2, stana);
-			pstat.setString(3, stase);
-			pstat.setString(4, stade);
-			pstat.setString(5, stawty);
-			pstat.setString(6, staed);
-			pstat.setString(7, stawtm);
+			pstat.setString(1, stana);
+			pstat.setString(2, stase);
+			pstat.setString(3, stade);
+			pstat.setString(4, stawty);
+			pstat.setString(5, staed);
+			pstat.setString(6, stawtm);
 			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();

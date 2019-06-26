@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<hr>
     	<table border="1" cellspacing="0" width="800px">
     		<tr align="center">
-    			<td>部门查询</td>
+    			<td>员工查询</td>
     			<%
     				String depart=null;
     				DepartDao ddao=new DepartDao(); 
@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</table>
     	<br>
     	<hr>
-    	<a href="addStaInfo.jsp">添加部门信息</a>
+    	<a href="addStaInfo.jsp">添加员工信息</a>
     	</center>
   </body>
 </html>

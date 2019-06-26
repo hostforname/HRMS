@@ -38,6 +38,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</tr>
     	</table>
     	<br>
+    	<%	String error=null;
+    		error=request.getParameter("error");
+    		if(error!=null){ 
+    	%>
+    		账号或密码不能为空
+    	<%
+    		} 
+    	%>
     	<br>
     	<input type="submit" value="新增">
     	</form>

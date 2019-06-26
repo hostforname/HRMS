@@ -24,7 +24,7 @@ public class TransferStaSer extends HttpServlet{
 		String staed=request.getParameter("staed");
 		String stawtm=request.getParameter("stawtm");
 		
-		System.out.println(stade);
+		//System.out.println(stade);
 		request.setAttribute("staid", staid);
 		request.setAttribute("stana", stana);
 		request.setAttribute("stase", stase);
