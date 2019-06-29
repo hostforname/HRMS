@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 		UserDao udao=new UserDao();
 		if(udao.isLogin(name, password)){
 			request.setAttribute("name", name);
-			request.getRequestDispatcher("hrmshome.jsp").forward(request, response);
+			request.getRequestDispatcher("index.html").forward(request, response);
 		}else{
 			response.sendRedirect("loginerror.html");
 		}
