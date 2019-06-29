@@ -6,55 +6,87 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>添加部门信息</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Amaze UI Admin index Examples</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">    
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+<!--
+<link rel="stylesheet" type="text/css" href="styles.css">
+-->
+<meta name="description" content="这是一个 index 页面">
+<meta name="keywords" content="index">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="renderer" content="webkit">
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="icon" type="image/png" href="assets/i/favicon.png">
+<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+<link rel="stylesheet" href="assets/css/admin.css">
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/app.js"></script>
+</head>
+<body>
+<!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
 
-  </head>
-  
-  <body>
-    	<center>
-    	<h2>添加部门信息</h2>
-    	<hr>
-    	
-    	<form action="AddDepSer" method="post">
-    	
-    	<table border="1" cellspacing="0" width="300px">
-    		<tr align="center">
-    			<td>部门名称</td>
-    			<td><input type="text" name="txtDep"></td>
-    		</tr>
-    		<tr align="center">
-    			<td>备注</td>
-    			<td><input type="text" name="txtDepRe"></td>
-    		</tr>
-    	</table>
-    	<br>
-    	<%	//对文本框里的值进行判断，判断是否有数据
-    		String error=null;
-    		error=request.getParameter("error");
-    		//System.out.println(error);
-    		if(error!=null){ 
-    	%>
-    		部门名称不能为空
-    	<%
-    		} 
-    	%>
-    	<br>
-    	<input type="submit" value="新增">
-    	</form>
-    	<br>
-    	<hr>
-    	</center>
-  </body>
+</head>
+
+<body>
+	<div>
+	<div class="admin-biaogelist" style="margin-top: 0px;margin-left: 0px;">
+		<div class="listbiaoti am-cf">
+		  <ul class="am-icon-flag on">
+			部门管理
+		  </ul>
+		  <dl class="am-icon-home" style="float: right;">
+			当前位置： 首页 > <a href="#">添加部门信息</a>
+		  </dl>
+		  <!--data-am-modal="{target: '#my-popup'}" 弹出层 ID  弹出层 190行 开始  271行结束--> 
+		  
+		</div>
+		<div class="fbneirong">
+				<form class="am-form" action="AddDepSer" method="post">
+				  <div class="am-form-group am-cf">
+					<div class="zuo">部门名称：</div>
+					<div class="you">
+					  <input type="text" name="txtDep" class="am-input-sm" id="doc-ipt-email-1" placeholder="请输入部门名称">
+					</div>
+				  </div>
+				  <div class="am-form-group am-cf">
+					<div class="zuo">备注：</div>
+					<div class="you">
+					  <textarea class="" name="txtDepRe" rows="2" id="doc-ta-1"></textarea>
+					</div>
+				  </div>
+				  
+				  <div class="am-form-group am-cf">
+				  		<div class="zuo"></div>
+						<div class="you">
+							<%	//对文本框里的值进行判断，判断是否有数据
+									String error=null;
+									error=request.getParameter("error");
+									//System.out.println(error);
+									if(error!=null){ 
+								%>
+									部门名称不能为空
+								<%
+									} 
+								%>
+						</div>
+				</div>	
+				  <div class="am-form-group am-cf">
+					<div class="you" style="margin-left: 11%;">
+					  <button type="submit" class="am-btn am-btn-success am-radius">新增</button>
+					</div>
+				  </div>
+				</form>
+			  </div>
+	</div>
+</body>
 </html>

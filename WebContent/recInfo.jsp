@@ -6,11 +6,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>添加部门信息</title>
-    
+<html class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Amaze UI Admin index Examples</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -19,73 +20,85 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<meta name="description" content="这是一个 index 页面">
+	<meta name="keywords" content="index">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="icon" type="image/png" href="assets/i/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+	<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+	<link rel="stylesheet" href="assets/css/admin.css">
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/app.js"></script>
+</head>
 
-  </head>
-  
-  <body>
-    	<center>
-    	<h2>招聘详细信息</h2>
-    	<hr>
-    	<form action="" method="post">
-    	<table border="1" cellspacing="0" width="300px">
-    		<tr align="center">
-    			<td>编号</td>
-    			<td><%=request.getAttribute("recid") %></td>
-            </tr>
-            <tr align="center">
-    			<td>姓名</td>
-    			<td><%=request.getAttribute("recna") %></td>
-    		</tr>
-            <tr align="center">
-    			<td>性别</td>
-    			<td><%=request.getAttribute("recse") %></td>
-    		</tr>
-            <tr align="center">
-    			<td>应聘职务</td>
-    			<td><%=request.getAttribute("recty") %></td>
-    		</tr>
-            <tr align="center">
-    			<td>学历</td>
-    			<td><%=request.getAttribute("reced") %></td>
-    		</tr>
-            <tr align="center">
-    			<td>工作经验</td>
-    			<td><%=request.getAttribute("recwe") %></td>
-    		</tr>
-            <tr align="center">
-    			<td>详细情况</td>
-    			<td><%=request.getAttribute("recdi") %></td>
-            </tr>
-            <tr align="center">
-    			<td>状态</td>
-    			<td>
-    			<%/*System.out.println(request.getAttribute("recst"))
-    			这里无法准确判断状态的值是多少
-    			但是使用Parameter就能获取到准确的值
-    			getParameter()：返回String类型的数据
+<body>
+	<!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
 
-    		    getAttribute()：返回String类型的数据，或 ，也可以是对象，但是当返回的是对象时需要进行强制转换
-    			*/
-    			%>
-    				<%
-    					if(request.getParameter("recst").equals("0")) {	   				
-    				%>						
-						未被录用
-					<%
-						}
-						else {
-					%>
-						已被录用
-					<%
-						}
-					%>
-    				
-    			</td>
-    		</tr>
-    	</table>
-    	</form>
-    	<br>
-    	<hr>
-    	</center>
-  </body>
+	</head>
+
+	<body>
+		<div>
+			<div class="admin-biaogelist" style="margin-top: 0px;margin-left: 0px;">
+				<div class="listbiaoti am-cf">
+					<ul class="am-icon-flag on">
+						招聘管理
+					</ul>
+					<dl class="am-icon-home" style="float: right;">
+						当前位置： 首页 > <a href="#">应聘人详细信息</a>
+					</dl>
+					<!--data-am-modal="{target: '#my-popup'}" 弹出层 ID  弹出层 190行 开始  271行结束-->
+
+				</div>
+				<div class="fbneirong">
+					<form class="am-form" action="" method="post">						
+						<div class="am-form-group am-cf">
+							<div class="zuo">编号：</div>
+							<div class="you">
+									<%=request.getAttribute("recid") %>
+							</div>
+						</div>
+						<div class="am-form-group am-cf">
+							<div class="zuo">姓名：</div>
+							<div class="you">
+									<%=request.getAttribute("recna") %>
+							</div>
+						</div>
+						<div class="am-form-group am-cf">
+							<div class="zuo">性别：</div>
+							<div class="you">
+									<%=request.getAttribute("recse") %>
+							</div>
+						</div>
+						<div class="am-form-group am-cf">
+							<div class="zuo">应聘职位：</div>
+							<div class="you">
+									<%=request.getAttribute("recty") %>
+							</div>
+						</div>
+						<div class="am-form-group am-cf">
+							<div class="zuo">学历：</div>
+							<div class="you">
+									<%=request.getAttribute("reced") %>
+							</div>
+						</div>
+						<div class="am-form-group am-cf">
+							<div class="zuo">工作经验：</div>
+							<div class="you">
+									<%=request.getAttribute("recwe") %>
+							</div>
+						</div>
+						<div class="am-form-group am-cf">
+							<div class="zuo">详细情况</div>
+							<div class="you">
+									<%=request.getAttribute("recdi") %>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+	</body>
+
 </html>

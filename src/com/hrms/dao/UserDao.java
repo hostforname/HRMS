@@ -82,7 +82,7 @@ public class UserDao {
 			pstat.setString(1, username);
 			pstat.setString(2, userpwd);
 			int result=pstat.executeUpdate();
-			System.out.println("增加成功"+result);		
+			//System.out.println("增加成功"+result);		
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{

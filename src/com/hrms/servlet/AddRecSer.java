@@ -23,7 +23,7 @@ public class AddRecSer extends HttpServlet {
 		String reced=request.getParameter("txtRecEd").trim();
 		String recwe=request.getParameter("txtRecWe").trim();
 		String recdi=request.getParameter("txtRecDi").trim();		
-		if(recna==""||recse==""||recty==""||reced==""||recwe=="") {
+		if(recna==""||recse==""||recty==""||reced=="") {
 			response.sendRedirect("addRecInfo.jsp?error=nonull");
 		}else {
 			RecDao rdao=new RecDao();

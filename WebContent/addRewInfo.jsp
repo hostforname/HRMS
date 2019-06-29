@@ -6,11 +6,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-    <base href="<%=basePath%>">
-    
-    <title>添加奖惩信息</title>
-    
+<html class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Amaze UI Admin index Examples</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -19,46 +20,92 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<meta name="description" content="这是一个 index 页面">
+	<meta name="keywords" content="index">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="icon" type="image/png" href="assets/i/favicon.png">
+	<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+	<link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+	<link rel="stylesheet" href="assets/css/admin.css">
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/app.js"></script>
+</head>
 
-  </head>
-  
-  <body>
-    	<center>
-    	<h2>添加奖惩信息</h2>
-    	<hr>
-    	<form action="AddRewSer" method="post">
-    	<table border="1" cellspacing="0" width="300px">
-    		<tr align="center">
-    			<td>奖惩主题</td>
-    			<td><input type="text" name="txtRewTl"></td>
-    		</tr>
-    		<tr align="center">
-    			<td>奖惩类型</td>
-    			<td><input type="text" name="txtRewTy"></td>
-    		</tr>
-    		<tr align="center">
-    			<td>奖惩金额</td>
-    			<td><input type="text" name="txtRewMo"></td>
-    		</tr>
-    		<tr align="center">
-    			<td>详细信息</td>
-    			<td><input type="text" name="txtRewDi"></td>
-    		</tr>
-    	</table>
-    	<br>
-    	<%	String error=null;
-    		error=request.getParameter("error");
-    		if(error!=null){ 
-    	%>
-    		前三项不能为空
-    	<%
-    		} 
-    	%>
-    	<br>
-    	<input type="submit" value="新增">
-    	</form>
-    	<br>
-    	<hr>
-    	</center>
-  </body>
+<body>
+	<!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！</p><![endif]-->
+
+	</head>
+
+	<body>
+		<div>
+			<div class="admin-biaogelist" style="margin-top: 0px;margin-left: 0px;">
+				<div class="listbiaoti am-cf">
+					<ul class="am-icon-flag on">
+						奖惩管理
+					</ul>
+					<dl class="am-icon-home" style="float: right;">
+						当前位置： 首页 > <a href="#">添加奖惩信息</a>
+					</dl>
+					<!--data-am-modal="{target: '#my-popup'}" 弹出层 ID  弹出层 190行 开始  271行结束-->
+
+				</div>
+				<div class="fbneirong">
+					<form class="am-form" action="AddRewSer" method="post">
+						<div class="am-form-group am-cf">
+							<div class="zuo">奖惩主题：</div>
+							<div class="you">
+								<input type="text" name="txtRewTl" class="am-input-sm" id="doc-ipt-email-1">
+							</div>
+						</div>
+						<div class="am-form-group am-cf">
+							<div class="zuo">奖惩类型：</div>
+							<div class="you" style="margin-top: 5px;">
+								<label class="am-checkbox-inline">
+									<input type="radio" name="txtRewTy" value="奖励">
+									奖励 </label>
+								<label class="am-checkbox-inline">
+									<input type="radio" name="txtRewTy" value="惩罚">
+									惩罚 </label>
+							</div>
+						</div>
+						<div class="am-form-group am-cf">
+							<div class="zuo">奖惩金额：</div>
+							<div class="you">
+								<input type="text" name="txtRewMo" class="am-input-sm" id="doc-ipt-email-1 placeholder="yyyy-MM-DD“>
+							</div>
+						</div>
+						<div class="am-form-group am-cf">
+							<div class="zuo">详细信息：</div>
+							<div class="you">
+								<textarea class="" name="txtRewDi" rows="2" id="doc-ta-1"></textarea>
+							</div>
+						</div>
+						<div class="am-form-group am-cf">
+							<div class="zuo"></div>
+							<div class="you">
+									<%	String error=null;
+									error=request.getParameter("error");
+									if(error!=null){ 
+								%>
+									前三项不能为空
+								<%
+									} 
+								%>
+							</div>
+						</div>
+						
+						
+						<div class=" am-form-group am-cf">
+								<div class="you" style="margin-left: 11%;">
+									<button type="submit" class="am-btn am-btn-success am-radius">新增</button>
+								</div>
+							</div>
+					</form>
+				</div>
+			</div>
+	</body>
+
 </html>
