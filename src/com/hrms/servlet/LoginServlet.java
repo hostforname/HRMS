@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
 		UserDao udao=new UserDao();
 		if(udao.isLogin(name, password)){
 			request.setAttribute("name", name);
+			//System.out.println("23");
 			request.getRequestDispatcher("index.html").forward(request, response);
 		}else{
 			response.sendRedirect("loginerror.html");

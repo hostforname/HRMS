@@ -33,7 +33,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
-  <body>
+  <body style="text-align: center;">
+  	<div style="margin:0 auto; width:500px; height: 500px;">
     	<div class="you" style="margin-left: 10%; margin-top:100px;">
         	<dl>
         		<a href="addStaInfo.jsp" target="ifrpage"><button type="button" class="am-btn am-btn-danger am-round am-btn-xs am-icon-plus" data-am-modal="{target: '#my-popup'}">
@@ -61,6 +62,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         	</dl>  
         </div>
-        
+     </div>
   </body>
 </html>
