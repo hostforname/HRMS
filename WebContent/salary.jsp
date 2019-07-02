@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<title>Amaze UI Admin index Examples</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<!--
@@ -51,11 +51,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						当前位置： 首页 > <a href="salary.jsp">薪资信息列表</a>
 					</dl>
 					<dl>
-						<a href="addSalInfo.jsp"><button type="button" class="am-btn am-btn-danger am-round am-btn-xs am-icon-plus"
-							data-am-modal="{target: '#my-popup'}">添加薪资信息</button></a>
+						<a href="addSalInfo.jsp"><button type="button"
+								class="am-btn am-btn-danger am-round am-btn-xs am-icon-plus"
+								data-am-modal="{target: '#my-popup'}">添加薪资信息</button></a>
 					</dl>
 					<!--data-am-modal="{target: '#my-popup'}" 弹出层 ID  弹出层 190行 开始  271行结束-->
 
+				</div>
+				
+				<div class="am-btn-toolbars am-btn-toolbar am-kg am-cf">
+					<ul>
+						<form action="TransferSalSer1" method="post">	
+							<li><button type="submit" class="am-btn am-radius am-btn-xs am-btn-success"
+								style="margin-top: -1px;">年月查询</button></li>
+							<li><input type="text" name="txtYearMo" id="nn" class="am-form-field am-input-sm am-input-xm" placeholder="yyyy-MM" /></li>							
+						</form>
+						<form action="TransferSalSer2" method="post">
+							<li><button type="submit" class="am-btn am-radius am-btn-xs am-btn-success"
+								style="margin-top: -1px;">员工查询</button></li>
+							<li>
+								<div class="am-btn-group am-btn-group-xs">
+									<select name="IdName" data-am-selected="{btnWidth: 90, btnSize: 'sm', btnStyle: 'default'}">
+										<%
+											SalDao sdao=new SalDao();
+											ArrayList<Salary> sals=null;
+											if(request.getAttribute("yearmo")!=null){
+												sals=sdao.selectYearMo(request.getAttribute("yearmo")+"");
+											}else if(request.getAttribute("id")!=null){
+												sals=sdao.selectIdName(Integer.parseInt(request.getAttribute("id")+""),request.getAttribute("name")+"");
+											}
+											else{
+												sals=sdao.getSalary();
+											}
+											for(Salary sal:sals){
+										%>
+										<option value="<%=sal.getStaffid() %>-><%=sal.getStaffname() %>">
+												<%=sal.getStaffid() %>-><%=sal.getStaffname() %>
+										</option>
+										<%
+											}
+										%>
+									</select>
+								</div>
+							</li>
+						</form>
+					</ul>
 				</div>
 				<form class="am-form am-g">
 					<table width="100%"
@@ -77,8 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</thead>
 						<tbody>
 							<%
-								SalDao sdao=new SalDao();
-								ArrayList<Salary> sals=sdao.getSalary();
+								
 								for(Salary sal:sals){
 							%>
 							<tr align="center">
@@ -92,14 +131,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<td><%=sal.getAbspay() %></td>
 								<td><%=sal.getInspay() %></td>
 								<td>
-										<%=
+									<%=
 											sal.getBasepay()+sal.getOvertimepay()+sal.getDuration()+sal.getAttpay()-sal.getAbspay()-sal.getInspay()
 										%>
 								</td>
 								<td>
 									<div style="margin:0 auto;">
 										<div class="am-btn-group am-btn-group-xs" style="margin:0 auto;">
-											<a href="RemoveSalSer?staid=<%=sal.getStaffid() %>&salcu=<%=sal.getCurmonth() %>" class="am-btn am-btn-default am-btn-xs am-text-danger am-round"
+											<a href="RemoveSalSer?staid=<%=sal.getStaffid() %>&salcu=<%=sal.getCurmonth() %>"
+												class="am-btn am-btn-default am-btn-xs am-text-danger am-round"
 												title="删除"><span class="am-icon-trash-o"></span></a>
 										</div>
 									</div>

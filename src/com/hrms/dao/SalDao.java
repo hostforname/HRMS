@@ -74,38 +74,6 @@ public class SalDao {
 		return sals;
 	}
 	/**
-	 * updateStaById() - 用于修改部门信息
-	 * @param staid
-	 * @param stana
-	 * @param stase
-	 * @param stade
-	 * @param stawtm 
-	 * @param staed 
-	 * @param stawty 
-	 */
-	/*
-	public void updateStaById(Integer staid, String stana, String stase, String stade, 
-			String stawty, String staed, String stawtm) {
-		String sql="update hrstaff set staffname=?,sex=?,department=?,worktype=?,education=?,worktime=? where staffid=?";
-		conn=dbutil.getConnection();
-		try{
-			pstat=(PreparedStatement) conn.prepareStatement(sql);
-			pstat.setString(1, stana);
-			pstat.setString(2, stase);
-			pstat.setString(3, stade);
-			pstat.setString(4, stawty);
-			pstat.setString(5, staed);
-			pstat.setString(6, stawtm);
-			pstat.setInt(7, staid);
-			pstat.execute();
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			dbutil.closeConnection(conn, pstat);
-		}		
-	}
-	 */
-	/**
 	 * removeDepById(Integer id) - 根据ID移除员工信息
 	 * @param id
 	 */
@@ -122,6 +90,52 @@ public class SalDao {
 		}finally{
 			dbutil.closeConnection(conn, pstat);
 		}
+	}
+
+	public ArrayList<Salary> selectYearMo(String yearmo) {
+		ArrayList<Salary> sals=new ArrayList<Salary>();
+		Salary sal=null;
+		String sql="select staffid,staffname,curmonth,basepay,overtimepay,duration,attpay,abspay,inspay from hrsalary where curmonth=?";
+		conn=dbutil.getConnection();
+		try{
+			pstat=(PreparedStatement) conn.prepareStatement(sql);
+			pstat.setString(1, yearmo);
+			rs=pstat.executeQuery();
+			while(rs.next()){
+				sal=new Salary(rs.getInt("staffid"),rs.getString("staffname"),rs.getString("curmonth"),rs.getInt("basepay"),rs.getInt("overtimepay")
+						,rs.getInt("duration"),rs.getInt("attpay"),rs.getInt("abspay"),rs.getInt("inspay"));
+				sals.add(sal);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			dbutil.closeConnection(conn, pstat,rs);
+		}
+		return sals;
+		
+	}
+
+	public ArrayList<Salary> selectIdName(Integer id, String name) {
+		ArrayList<Salary> sals=new ArrayList<Salary>();
+		Salary sal=null;
+		String sql="select staffid,staffname,curmonth,basepay,overtimepay,duration,attpay,abspay,inspay from hrsalary where staffid=? and staffname=?";
+		conn=dbutil.getConnection();
+		try{
+			pstat=(PreparedStatement) conn.prepareStatement(sql);
+			pstat.setInt(1, id);
+			pstat.setString(2, name);
+			rs=pstat.executeQuery();
+			while(rs.next()){
+				sal=new Salary(rs.getInt("staffid"),rs.getString("staffname"),rs.getString("curmonth"),rs.getInt("basepay"),rs.getInt("overtimepay")
+						,rs.getInt("duration"),rs.getInt("attpay"),rs.getInt("abspay"),rs.getInt("inspay"));
+				sals.add(sal);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			dbutil.closeConnection(conn, pstat,rs);
+		}
+		return sals;
 	}
 
 }

@@ -223,4 +223,22 @@
   	<servlet-name>UpdateUserSer</servlet-name>
   	<url-pattern>/UpdateUserSer</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>TransferSalSer1</servlet-name>
+  	<servlet-class>com.hrms.servlet.TransferSalSer1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TransferSalSer1</servlet-name>
+  	<url-pattern>/TransferSalSer1</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>TransferSalSer2</servlet-name>
+  	<servlet-class>com.hrms.servlet.TransferSalSer2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TransferSalSer2</servlet-name>
+  	<url-pattern>/TransferSalSer2</url-pattern>
+  </servlet-mapping>
 </web-app>
