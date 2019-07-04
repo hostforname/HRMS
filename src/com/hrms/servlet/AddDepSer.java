@@ -26,7 +26,7 @@ public class AddDepSer extends HttpServlet {
 				response.sendRedirect("addDepInfo.jsp?error=nonull");
 			}else {
 				String dep=request.getParameter("txtDep").trim();
-				String depre=request.getParameter("txtD3epRe").trim();
+				String depre=request.getParameter("txtDepRe").trim();
 							
 				DepartDao ddao=new DepartDao();
 				ddao.addDep(dep, depre);
