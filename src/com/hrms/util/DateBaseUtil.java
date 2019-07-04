@@ -51,7 +51,8 @@ public class DateBaseUtil {
 		}
 	}
 	
-	public void closeConnection(java.sql.Connection conn, java.sql.PreparedStatement pstat) {
+	public void closeConnection(java.sql.Connection conn, 
+			java.sql.PreparedStatement pstat) {
 		try{
 			closeDBObject(pstat);
 		}catch(SQLException e){}finally{

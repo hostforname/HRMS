@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.hrms.dao.UserDao;
 
 public class LoginServlet extends HttpServlet {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public void init() throws ServletException { }
@@ -27,8 +24,9 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		try {
-			request.setCharacterEncoding("UTF-8");
+			
 			String name=request.getParameter("txtName").trim();
 			String password=request.getParameter("txtPwd").trim();
 			UserDao udao=new UserDao();

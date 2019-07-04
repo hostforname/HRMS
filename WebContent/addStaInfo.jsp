@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="am-form-group am-cf">
 							<div class="zuo">工种：</div>
 							<div class="you">
-								<input type="text" name="txtStaWTY" class="am-input-sm" id="doc-ipt-email-1">
+								<input type="text" name="txtStaWTy" class="am-input-sm" id="doc-ipt-email-1">
 							</div>
 						</div>
 						<div class="am-form-group am-cf">

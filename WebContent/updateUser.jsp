@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 						<div class=" am-form-group am-cf">
 								<div class="you" style="margin-left: 11%;">
-									<button type="submit" class="am-btn am-btn-success am-radius">新增</button>
+									<button type="submit" class="am-btn am-btn-success am-radius">修改</button>
 								</div>
 							</div>
 					</form>
