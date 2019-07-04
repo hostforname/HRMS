@@ -16,11 +16,16 @@ public class RemoveDepSer extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer depid=Integer.parseInt(request.getParameter("depid"));
+		try {
+			Integer depid=Integer.parseInt(request.getParameter("depid"));
+			
+			DepartDao ddao=new DepartDao();
+			ddao.removeDepById(depid);
+			
+			response.sendRedirect("department.jsp");
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
 		
-		DepartDao ddao=new DepartDao();
-		ddao.removeDepById(depid);
-		
-		response.sendRedirect("department.jsp");
 	}
 }

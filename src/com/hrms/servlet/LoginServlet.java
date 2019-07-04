@@ -27,17 +27,20 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		String name=request.getParameter("txtName").trim();
-		String password=request.getParameter("txtPwd").trim();
-		//System.out.println("23");
-		UserDao udao=new UserDao();
-		if(udao.isLogin(name, password)){
-			request.setAttribute("name", name);
-			//System.out.println("23");
-			request.getRequestDispatcher("hrmshome.jsp").forward(request, response);
-		}else{
-			response.sendRedirect("loginerror.html");
+		try {
+			request.setCharacterEncoding("UTF-8");
+			String name=request.getParameter("txtName").trim();
+			String password=request.getParameter("txtPwd").trim();
+			UserDao udao=new UserDao();
+			if(udao.isLogin(name, password)){
+				request.setAttribute("name", name);
+				request.getRequestDispatcher("hrmshome.jsp").forward(request, response);
+			}else{
+				response.sendRedirect("loginerror.html");
+			}
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
 		}
+		
 	}
 }

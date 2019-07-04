@@ -25,10 +25,11 @@ public class UpdateDepSer extends HttpServlet {
 			
 			DepartDao ddao=new DepartDao();		
 			ddao.updateDepById(depid,dep,depre);
+			response.sendRedirect("department.jsp");
 		}catch(Exception e) {
-			System.out.println("111");
+			response.sendRedirect("error.html");
 		}
 		
-		response.sendRedirect("department.jsp");
+		
 	}
 }

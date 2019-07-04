@@ -16,23 +16,26 @@ public class TransferTraSer extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer traid=Integer.parseInt(request.getParameter("traid").trim());
-		String traer=request.getParameter("traer").trim();
-		String tratl=request.getParameter("tratl").trim();
-		String tratm=request.getParameter("tratm").trim();
-		String traad=request.getParameter("traad").trim();
-		String tradi=request.getParameter("tradi").trim();
-		
-		//System.out.println(depre);
-		request.setAttribute("traid", traid);
-		request.setAttribute("traer", traer);
-		request.setAttribute("tratl", tratl);
-		request.setAttribute("tratm", tratm);
-		request.setAttribute("traad", traad);
-		request.setAttribute("tradi", tradi);
-		
-		//System.out.println(request.getAttribute("recst"));
-
-		request.getRequestDispatcher("traInfo.jsp").forward(request, response);		
+		try{
+			Integer traid=Integer.parseInt(request.getParameter("traid").trim());
+			String traer=request.getParameter("traer").trim();
+			String tratl=request.getParameter("tratl").trim();
+			String tratm=request.getParameter("tratm").trim();
+			String traad=request.getParameter("traad").trim();
+			String tradi=request.getParameter("tradi").trim();
+			
+			request.setAttribute("traid", traid);
+			request.setAttribute("traer", traer);
+			request.setAttribute("tratl", tratl);
+			request.setAttribute("tratm", tratm);
+			request.setAttribute("traad", traad);
+			request.setAttribute("tradi", tradi);
+			
+			request.getRequestDispatcher("traInfo.jsp").forward(request, response);	
+			
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
+			
 	}
 }

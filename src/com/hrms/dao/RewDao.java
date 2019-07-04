@@ -19,12 +19,13 @@ public class RewDao {
 		dbutil=new DateBaseUtil();
 	}
 	
+	
 	/**
-	 * addDep() - 用于新增部门信息
-	 * @param depid
-	 * @param dep
-	 * @param depct
-	 * @param depre
+	 * addRew() - 向数据库中添加一条奖惩信息
+	 * @param rewtl
+	 * @param rewty
+	 * @param rewmo
+	 * @param rewdi
 	 */
 	public void addRew(String rewtl, Integer rewty, Integer rewmo, 
 			String rewdi){
@@ -45,8 +46,8 @@ public class RewDao {
 	}
 	
 	/**
-	 * getEmps() - 获取数据库表中所有员工信息
-	 * @return - ArrayList<Emp> emps
+	 * getRewpun() - 从数据库中获取所有奖惩信息
+	 * @return - ArrayList<Rewpun> rews
 	 */
 	public ArrayList<Rewpun> getRewpun(){
 		ArrayList<Rewpun> rews=new ArrayList<Rewpun>();
@@ -68,41 +69,10 @@ public class RewDao {
 		}
 		return rews;
 	}
+	
 	/**
-	 * updateStaById() - 用于修改部门信息
-	 * @param staid
-	 * @param stana
-	 * @param stase
-	 * @param stade
-	 * @param stawtm 
-	 * @param staed 
-	 * @param stawty 
-	 */
-	/*
-	public void updateStaById(Integer staid, String stana, String stase, String stade, 
-			String stawty, String staed, String stawtm) {
-		String sql="update hrstaff set staffname=?,sex=?,department=?,worktype=?,education=?,worktime=? where staffid=?";
-		conn=dbutil.getConnection();
-		try{
-			pstat=(PreparedStatement) conn.prepareStatement(sql);
-			pstat.setString(1, stana);
-			pstat.setString(2, stase);
-			pstat.setString(3, stade);
-			pstat.setString(4, stawty);
-			pstat.setString(5, staed);
-			pstat.setString(6, stawtm);
-			pstat.setInt(7, staid);
-			pstat.execute();
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			dbutil.closeConnection(conn, pstat);
-		}		
-	}
-	 */
-	/**
-	 * removeDepById(Integer id) - 根据ID移除员工信息
-	 * @param id
+	 * removeRewById() - 通过id来删除对应的奖惩信息
+	 * @param rewid
 	 */
 	public void removeRewById(Integer rewid){
 		String sql="delete from hrrewpun where rewpunid=?";

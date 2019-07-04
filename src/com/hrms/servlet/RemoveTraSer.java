@@ -16,11 +16,16 @@ public class RemoveTraSer extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer traid=Integer.parseInt(request.getParameter("traid"));
+		try {
+			Integer traid=Integer.parseInt(request.getParameter("traid"));
+			
+			TraDao tdao=new TraDao();
+			tdao.removeTraById(traid);
+			
+			response.sendRedirect("train.jsp");
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
 		
-		TraDao tdao=new TraDao();
-		tdao.removeTraById(traid);
-		
-		response.sendRedirect("train.jsp");
 	}
 }

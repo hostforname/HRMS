@@ -16,11 +16,16 @@ public class RemoveUserSer extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer useid=Integer.parseInt(request.getParameter("useid"));
+		try {
+			Integer useid=Integer.parseInt(request.getParameter("useid"));
+			
+			UserDao udao=new UserDao();
+			udao.removeUserById(useid);
+			
+			response.sendRedirect("user.jsp");
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
 		
-		UserDao udao=new UserDao();
-		udao.removeUserById(useid);
-		
-		response.sendRedirect("user.jsp");
 	}
 }

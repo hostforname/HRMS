@@ -3,7 +3,6 @@ package com.hrms.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.hrms.bean.Department;
 import com.hrms.util.DateBaseUtil;
@@ -25,7 +24,7 @@ public class DepartDao {
 	 * @param depid
 	 * @param dep
 	 * @param depct
-	 * @param depre
+	 * @param depre 
 	 */
 	public void addDep(String dep,
 			String depre){
@@ -44,8 +43,8 @@ public class DepartDao {
 	}
 	
 	/**
-	 * getEmps() - 获取数据库表中所有员工信息
-	 * @return - ArrayList<Emp> emps
+	 * getDepartment() - 获取数据库表中所有部门信息
+	 * @return - ArrayList<Department> deps
 	 */
 	public ArrayList<Department> getDepartment(){
 		ArrayList<Department> departs=new ArrayList<Department>();
@@ -67,6 +66,10 @@ public class DepartDao {
 		return departs;
 	}
 	
+	/**
+	 * getDepart() - 获取数据表表中的部门名称信息
+	 * @return - ArrayList<Department> departs
+	 */
 	public ArrayList<Department> getDepart(){
 		ArrayList<Department> departs=new ArrayList<Department>();
 		Department depart=null;
@@ -90,7 +93,6 @@ public class DepartDao {
 	 * updateDepById() - 用于修改部门信息
 	 * @param depid
 	 * @param name
-	 * @param depct
 	 * @param depre
 	 */
 	public void updateDepById(Integer depid, String dep, String depre) {
@@ -110,7 +112,7 @@ public class DepartDao {
 	}
 
 	/**
-	 * removeDepById(Integer id) - 根据ID移除员工信息
+	 * removeDepById(Integer id) - 根据ID移除部门信息
 	 * @param id
 	 */
 	public void removeDepById(Integer depid){
@@ -127,6 +129,11 @@ public class DepartDao {
 		}
 	}
 	
+	/**
+	 * getNums(String department) - 从员工表进行统计获得一个部门人数
+	 * @param department
+	 * @return - nums
+	 */
 	public Integer getNums(String department) {
 		String sql="select count(*) as nums from hrstaff where department=?";
 		conn=dbutil.getConnection();

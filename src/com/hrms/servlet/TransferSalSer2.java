@@ -18,16 +18,20 @@ public class TransferSalSer2 extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String idname=request.getParameter("IdName").trim();
-		String[] array =idname.toString().split("->");
-		//System.out.println(yearmo);
-		Integer id=Integer.parseInt(array[0]);
-		String name=array[1];
-		SalDao sdao= new SalDao();
-		sdao.selectIdName(id,name);
+		try {
+			String idname=request.getParameter("IdName").trim();
+			String[] array =idname.toString().split("->");
+			Integer id=Integer.parseInt(array[0]);
+			String name=array[1];
+			SalDao sdao= new SalDao();
+			sdao.selectIdName(id,name);
+			
+			request.setAttribute("id", id);
+			request.setAttribute("name", name);
+			request.getRequestDispatcher("salary.jsp").forward(request, response);		
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
 		
-		request.setAttribute("id", id);
-		request.setAttribute("name", name);
-		request.getRequestDispatcher("salary.jsp").forward(request, response);		
 	}
 }

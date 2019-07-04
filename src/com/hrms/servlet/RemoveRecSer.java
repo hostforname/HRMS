@@ -17,11 +17,16 @@ public class RemoveRecSer extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer recid=Integer.parseInt(request.getParameter("recid"));
+		try {
+			Integer recid=Integer.parseInt(request.getParameter("recid"));
+			
+			RecDao rdao=new RecDao();
+			rdao.removeRecById(recid);
+			
+			response.sendRedirect("recruit.jsp");
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
 		
-		RecDao rdao=new RecDao();
-		rdao.removeRecById(recid);
-		
-		response.sendRedirect("recruit.jsp");
 	}
 }

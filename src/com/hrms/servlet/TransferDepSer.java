@@ -16,17 +16,21 @@ public class TransferDepSer extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String depid=request.getParameter("depid");
-		String dep=request.getParameter("dep");
-		String depct=request.getParameter("depct");
-		String depre=request.getParameter("depre");
-		
-		//System.out.println(depre);
-		request.setAttribute("depid", depid);
-		request.setAttribute("dep", dep);
-		request.setAttribute("depct", depct);
-		request.setAttribute("depre", depre);
+		try {
+			String depid=request.getParameter("depid");
+			String dep=request.getParameter("dep");
+			String depct=request.getParameter("depct");
+			String depre=request.getParameter("depre");
+			
+			request.setAttribute("depid", depid);
+			request.setAttribute("dep", dep);
+			request.setAttribute("depct", depct);
+			request.setAttribute("depre", depre);
 
-		request.getRequestDispatcher("updateDep.jsp").forward(request, response);		
+			request.getRequestDispatcher("updateDep.jsp").forward(request, response);
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
+				
 	}
 }

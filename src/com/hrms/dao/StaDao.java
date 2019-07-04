@@ -3,13 +3,17 @@ package com.hrms.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.hrms.bean.Staff;
 import com.hrms.util.DateBaseUtil;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
+/**
+ * 
+ * 列出区域列表
+ * @return
+ */
 public class StaDao {
 	DateBaseUtil dbutil;
 	Connection conn=null;
@@ -20,12 +24,15 @@ public class StaDao {
 		dbutil=new DateBaseUtil();
 	}
 	
+	
 	/**
-	 * addDep() - 用于新增部门信息
-	 * @param depid
-	 * @param dep
-	 * @param depct
-	 * @param depre
+	 * addSta() - 向数据库中添加员工信息
+	 * @param stana
+	 * @param stase
+	 * @param stade
+	 * @param stawty
+	 * @param staed
+	 * @param stawtm
 	 */
 	public void addSta(String stana, String stase, String stade, 
 			String stawty, String staed, String stawtm){
@@ -47,9 +54,10 @@ public class StaDao {
 		}
 	}
 	
+	
 	/**
-	 * getEmps() - 获取数据库表中所有员工信息
-	 * @return - ArrayList<Emp> emps
+	 * getStaff() - 查询数据库中所有员工信息
+	 * @return - ArrayList<Staff> stas
 	 */
 	public ArrayList<Staff> getStaff(){
 		ArrayList<Staff> stas=new ArrayList<Staff>();
@@ -71,15 +79,16 @@ public class StaDao {
 		}
 		return stas;
 	}
+	
 	/**
-	 * updateStaById() - 用于修改部门信息
+	 * updateStaById() - 通过id来更新数据库中的员工信息
 	 * @param staid
 	 * @param stana
 	 * @param stase
 	 * @param stade
-	 * @param stawtm 
-	 * @param staed 
-	 * @param stawty 
+	 * @param stawty
+	 * @param staed
+	 * @param stawtm
 	 */
 	public void updateStaById(Integer staid, String stana, String stase, String stade, 
 			String stawty, String staed, String stawtm) {
@@ -103,8 +112,8 @@ public class StaDao {
 	}
 
 	/**
-	 * removeDepById(Integer id) - 根据ID移除员工信息
-	 * @param id
+	 * removeStaById(Integer id) - 根据ID移除员工信息
+	 * @param staid
 	 */
 	public void removeStaById(Integer staid){
 		String sql="delete from hrstaff where staffid=?";

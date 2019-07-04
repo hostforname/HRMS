@@ -16,27 +16,30 @@ public class TransferRecSer extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer recid=Integer.parseInt(request.getParameter("recid").trim());
-		String recna=request.getParameter("recna").trim();
-		String recse=request.getParameter("recse").trim();
-		String recty=request.getParameter("recty").trim();
-		String reced=request.getParameter("reced").trim();
-		String recwe=request.getParameter("recwe").trim();
-		String recdi=request.getParameter("recdi").trim();
-		Integer recst=Integer.parseInt(request.getParameter("recst").trim());
 		
-		//System.out.println(depre);
-		request.setAttribute("recid", recid);
-		request.setAttribute("recna", recna);
-		request.setAttribute("recse", recse);
-		request.setAttribute("recty", recty);
-		request.setAttribute("reced", reced);
-		request.setAttribute("recwe", recwe);
-		request.setAttribute("recdi", recdi);
-		request.setAttribute("recst", recst);
-		
-		//System.out.println(request.getAttribute("recst"));
+		try {
+			Integer recid=Integer.parseInt(request.getParameter("recid").trim());
+			String recna=request.getParameter("recna").trim();
+			String recse=request.getParameter("recse").trim();
+			String recty=request.getParameter("recty").trim();
+			String reced=request.getParameter("reced").trim();
+			String recwe=request.getParameter("recwe").trim();
+			String recdi=request.getParameter("recdi").trim();
+			Integer recst=Integer.parseInt(request.getParameter("recst").trim());
+			
+			request.setAttribute("recid", recid);
+			request.setAttribute("recna", recna);
+			request.setAttribute("recse", recse);
+			request.setAttribute("recty", recty);
+			request.setAttribute("reced", reced);
+			request.setAttribute("recwe", recwe);
+			request.setAttribute("recdi", recdi);
+			request.setAttribute("recst", recst);
 
-		request.getRequestDispatcher("recInfo.jsp").forward(request, response);		
+			request.getRequestDispatcher("recInfo.jsp").forward(request, response);		
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
+		
 	}
 }

@@ -16,12 +16,18 @@ public class RemoveSalSer extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer staid=Integer.parseInt(request.getParameter("staid"));
-		String salcu=request.getParameter("salcu");
 		
-		SalDao sdao=new SalDao();
-		sdao.removeSal(staid,salcu);
+		try {
+			Integer staid=Integer.parseInt(request.getParameter("staid"));
+			String salcu=request.getParameter("salcu");
+			
+			SalDao sdao=new SalDao();
+			sdao.removeSal(staid,salcu);
+			
+			response.sendRedirect("salary.jsp");
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
 		
-		response.sendRedirect("salary.jsp");
 	}
 }

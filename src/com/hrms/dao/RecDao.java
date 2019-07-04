@@ -3,7 +3,6 @@ package com.hrms.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.hrms.bean.Recruit;
 import com.hrms.util.DateBaseUtil;
@@ -20,12 +19,15 @@ public class RecDao {
 		dbutil=new DateBaseUtil();
 	}
 	
+	
 	/**
-	 * addDep() - 用于新增部门信息
-	 * @param depid
-	 * @param dep
-	 * @param depct
-	 * @param depre
+	 * addRec() - 向数据库中增加一个新的招聘信息
+	 * @param name
+	 * @param sex
+	 * @param recruittype
+	 * @param education
+	 * @param workexp
+	 * @param detainfo
 	 */
 	public void addRec( String name, String sex, String recruittype, 
 			String education, String workexp, String detainfo){
@@ -47,9 +49,10 @@ public class RecDao {
 		}
 	}
 	
+	
 	/**
-	 * getEmps() - 获取数据库表中所有员工信息
-	 * @return - ArrayList<Emp> emps
+	 * getRecruit() - 查询数据库中所有的应聘信息
+	 * @return - ArrayList<Recruit> recs
 	 */
 	public ArrayList<Recruit> getRecruit(){
 		ArrayList<Recruit> recs=new ArrayList<Recruit>();
@@ -71,10 +74,11 @@ public class RecDao {
 		}
 		return recs;
 	}
+	
 	/**
-	 * updateStaById() - 用于修改部门信息
-	 * @param staid
-	 * @param stana
+	 * updateRecById() - 通过id来更新应聘人的录用状态
+	 * @param recruitid
+	 * @param status
 	 */
 	public void updateRecById(Integer recruitid,Integer status) {
 		String sql="update hrrecruit set status=? where recruitid=?";
@@ -95,9 +99,10 @@ public class RecDao {
 		}		
 	}
 
+	
 	/**
-	 * removeDepById(Integer id) - 根据ID移除员工信息
-	 * @param id
+	 * removeRecById() - 通过id来删除相关的信息
+	 * @param recruitid
 	 */
 	public void removeRecById(Integer recruitid){
 		String sql="delete from hrrecruit where recruitid=?";

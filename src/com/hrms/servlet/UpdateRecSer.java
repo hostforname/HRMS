@@ -17,12 +17,17 @@ public class UpdateRecSer extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer recid=Integer.parseInt(request.getParameter("recid"));
-		Integer recst=Integer.parseInt(request.getParameter("recst"));
+		try {
+			Integer recid=Integer.parseInt(request.getParameter("recid"));
+			Integer recst=Integer.parseInt(request.getParameter("recst"));
+			
+			RecDao rdao=new RecDao();
+			rdao.updateRecById(recid,recst);
+			
+			response.sendRedirect("recruit.jsp");	
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
 		
-		RecDao rdao=new RecDao();
-		rdao.updateRecById(recid,recst);
-		
-		response.sendRedirect("recruit.jsp");
 	}
 }

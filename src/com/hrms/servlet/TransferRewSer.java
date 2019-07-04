@@ -16,23 +16,24 @@ public class TransferRewSer extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer rewid=Integer.parseInt(request.getParameter("rewid").trim());
-		String rewtl=request.getParameter("rewtl").trim();
-		Integer rewty=Integer.parseInt(request.getParameter("rewty").trim());
-		Integer rewmo=Integer.parseInt(request.getParameter("rewmo").trim());
-		String rewtm=request.getParameter("rewtm").trim();
-		String rewdi=request.getParameter("rewdi").trim();
-		
-		//System.out.println(depre);
-		request.setAttribute("rewid", rewid);
-		request.setAttribute("rewtl", rewtl);
-		request.setAttribute("rewty", rewty);
-		request.setAttribute("rewmo", rewmo);
-		request.setAttribute("rewtm", rewtm);
-		request.setAttribute("rewdi", rewdi);
-		
-		//System.out.println(request.getAttribute("recst"));
-
-		request.getRequestDispatcher("rewInfo.jsp").forward(request, response);		
+		try {
+			Integer rewid=Integer.parseInt(request.getParameter("rewid").trim());
+			String rewtl=request.getParameter("rewtl").trim();
+			Integer rewty=Integer.parseInt(request.getParameter("rewty").trim());
+			Integer rewmo=Integer.parseInt(request.getParameter("rewmo").trim());
+			String rewtm=request.getParameter("rewtm").trim();
+			String rewdi=request.getParameter("rewdi").trim();
+			
+			request.setAttribute("rewid", rewid);
+			request.setAttribute("rewtl", rewtl);
+			request.setAttribute("rewty", rewty);
+			request.setAttribute("rewmo", rewmo);
+			request.setAttribute("rewtm", rewtm);
+			request.setAttribute("rewdi", rewdi);
+			
+			request.getRequestDispatcher("rewInfo.jsp").forward(request, response);		
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}		
 	}
 }

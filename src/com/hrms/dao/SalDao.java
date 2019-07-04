@@ -19,12 +19,18 @@ public class SalDao {
 		dbutil=new DateBaseUtil();
 	}
 	
+	
 	/**
-	 * addDep() - 用于新增部门信息
-	 * @param depid
-	 * @param dep
-	 * @param depct
-	 * @param depre
+	 * addSal() - 向数据库添加一条新的薪资信息
+	 * @param staid
+	 * @param stana
+	 * @param salcu
+	 * @param salba
+	 * @param salov
+	 * @param saldu
+	 * @param salat
+	 * @param salab
+	 * @param salin
 	 */
 	public void addSal(Integer staid,String stana,String salcu,Integer salba, Integer salov, 
 			Integer saldu,Integer salat,Integer salab,Integer salin){
@@ -49,10 +55,11 @@ public class SalDao {
 		}
 	}
 	
+	
 	/**
-	 * getEmps() - 获取数据库表中所有员工信息
-	 * @return - ArrayList<Emp> emps
-	 */
+	 * getSalry() - 获取所有薪资信息
+	 * @return - ArrayList<Salary> sals
+	 */ 
 	public ArrayList<Salary> getSalary(){
 		ArrayList<Salary> sals=new ArrayList<Salary>();
 		Salary sal=null;
@@ -73,9 +80,11 @@ public class SalDao {
 		}
 		return sals;
 	}
+	
 	/**
-	 * removeDepById(Integer id) - 根据ID移除员工信息
-	 * @param id
+	 * removeSal() - 通过员工的id和创建的这条记录的时间去删除相对应的记录
+	 * @param staid
+	 * @param salcu
 	 */
 	public void removeSal(Integer staid,String salcu){
 		String sql="delete from hrsalary where staffid=? and curmonth like ?";
@@ -92,6 +101,11 @@ public class SalDao {
 		}
 	}
 
+	/**
+	 * selectYearMo() - 通过创建时间来查询相关的数据信息
+	 * @param yearmo
+	 * @return - ArrayList<Salary> sals
+	 */
 	public ArrayList<Salary> selectYearMo(String yearmo) {
 		ArrayList<Salary> sals=new ArrayList<Salary>();
 		Salary sal=null;
@@ -115,6 +129,12 @@ public class SalDao {
 		
 	}
 
+	/**
+	 * selectIdName() - 通过员工id和员工姓名来查询相关信息
+	 * @param id
+	 * @param name
+	 * @return - ArrayList<Salary> sals
+	 */
 	public ArrayList<Salary> selectIdName(Integer id, String name) {
 		ArrayList<Salary> sals=new ArrayList<Salary>();
 		Salary sal=null;

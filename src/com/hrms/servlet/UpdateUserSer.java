@@ -41,7 +41,7 @@ public class UpdateUserSer extends HttpServlet {
 				request.getRequestDispatcher("updatePwdError.jsp").forward(request, response);
 			}
 		}catch(Exception e) {
-			System.out.println("111");
+			response.sendRedirect("error.html");
 		}
 	}
 }

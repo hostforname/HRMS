@@ -29,10 +29,12 @@ public class UpdateStaSer extends HttpServlet {
 			
 			StaDao sdao=new StaDao();		
 			sdao.updateStaById(staid,stana,stase,stade,stawty,staed,stawtm);
+			
+			response.sendRedirect("staff.jsp");
 		}catch(Exception e) {
-			System.out.println("111");
+			response.sendRedirect("error.html");
 		}
 		
-		response.sendRedirect("staff.jsp");
+		
 	}
 }

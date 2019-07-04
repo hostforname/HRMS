@@ -10,23 +10,31 @@ import javax.servlet.http.HttpServletResponse;
 import com.hrms.dao.DepartDao;
 
 public class AddDepSer extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		if(request.getParameter("txtDep")=="") {
-			//System.out.println("1");
-			response.sendRedirect("addDepInfo.jsp?error=nonull");
-		}else {
-			String dep=request.getParameter("txtDep").trim();
-			String depre=request.getParameter("txtDepRe").trim();
-						
-			DepartDao ddao=new DepartDao();
-			ddao.addDep(dep, depre);
-			
-			response.sendRedirect("department.jsp");
-		}	
+		try{
+			if(request.getParameter("txtDep")=="") {
+				response.sendRedirect("addDepInfo.jsp?error=nonull");
+			}else {
+				String dep=request.getParameter("txtDep").trim();
+				String depre=request.getParameter("txtD3epRe").trim();
+							
+				DepartDao ddao=new DepartDao();
+				ddao.addDep(dep, depre);
+				
+				response.sendRedirect("department.jsp");
+			}	
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
 	}
 }

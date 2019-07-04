@@ -16,11 +16,16 @@ public class RemoveStaSer extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer staid=Integer.parseInt(request.getParameter("staid"));
+		try {
+			Integer staid=Integer.parseInt(request.getParameter("staid"));
+			
+			StaDao sdao=new StaDao();
+			sdao.removeStaById(staid);
+			
+			response.sendRedirect("staff.jsp");
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
 		
-		StaDao sdao=new StaDao();
-		sdao.removeStaById(staid);
-		
-		response.sendRedirect("staff.jsp");
 	}
 }

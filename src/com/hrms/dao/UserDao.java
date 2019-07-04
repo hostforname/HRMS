@@ -8,7 +8,6 @@ import com.hrms.bean.User;
 import com.hrms.util.DateBaseUtil;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.Statement;
 
 public class UserDao {
 	DateBaseUtil dbutil;
@@ -46,8 +45,8 @@ public class UserDao {
 	}
 	
 	/**
-	 * getEmps() - 获取数据库表中所有员工信息
-	 * @return - ArrayList<Emp> emps
+	 * getUser() - 获取数据库表中所有管理员信息
+	 * @return - ArrayList<User> uses
 	 */
 	public ArrayList<User> getUser(){
 		ArrayList<User> uses=new ArrayList<User>();
@@ -69,10 +68,11 @@ public class UserDao {
 		return uses;
 	}
 	
+	
 	/**
-	 * isLogin(String username, String userwd) - 增添新用户
-	 * @param username - 用户名
-	 * @param userwd - 密码
+	 * addUser() - 增加管理员信息
+	 * @param username
+	 * @param userpwd
 	 */
 	public void addUser(String username, String userpwd) {
 		String sql="insert into hruser(username,userpwd) values(?,?)";
@@ -81,8 +81,7 @@ public class UserDao {
 			pstat=(PreparedStatement) conn.prepareStatement(sql);
 			pstat.setString(1, username);
 			pstat.setString(2, userpwd);
-			int result=pstat.executeUpdate();
-			//System.out.println("增加成功"+result);		
+			pstat.execute();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
@@ -91,8 +90,8 @@ public class UserDao {
 	}
 	
 	/**
-	 * removeDepById(Integer id) - 根据ID移除员工信息
-	 * @param id
+	 * removeUserById() - 通过id来移除管理员信息
+	 * @param useid
 	 */
 	public void removeUserById(Integer useid){
 		String sql="delete from hruser where userid=?";
@@ -108,6 +107,12 @@ public class UserDao {
 		}
 	}
 
+	/**
+	 * updatePwd() 通过用户名和密码来更新新密码
+	 * @param name
+	 * @param opwd
+	 * @param npwd
+	 */
 	public void updatePwd(String name, String opwd, String npwd) {
 		String sql="update hruser set userpwd=? where username=? and userpwd=?";
 		conn=dbutil.getConnection();

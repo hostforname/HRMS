@@ -16,11 +16,17 @@ public class RemoveRewSer extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Integer rewid=Integer.parseInt(request.getParameter("rewid"));
 		
-		RewDao rdao=new RewDao();
-		rdao.removeRewById(rewid);
+		try {
+			Integer rewid=Integer.parseInt(request.getParameter("rewid"));
+			
+			RewDao rdao=new RewDao();
+			rdao.removeRewById(rewid);
+			
+			response.sendRedirect("rewpun.jsp");
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}
 		
-		response.sendRedirect("rewpun.jsp");
 	}
 }
