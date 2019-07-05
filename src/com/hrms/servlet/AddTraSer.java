@@ -16,19 +16,22 @@ public class AddTraSer extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		String traer=request.getParameter("txtTraEr").trim();
-		String tratl=request.getParameter("txtTraTl").trim();
-		String tratm=request.getParameter("txtTraTm").trim();
-		String traad=request.getParameter("txtTraAd").trim();
-		String tradi=request.getParameter("txtTraDi").trim();		
-		if(traer==""||tratl==""||tratm==""||traad=="") {
-			response.sendRedirect("addTraInfo.jsp?error=nonull");
-		}else {
-			TraDao tdao=new TraDao();
-			tdao.addTra(traer,tratl,tratm,traad,tradi);
-			
-			response.sendRedirect("train.jsp");
-		}
+		try {
+			String traer=request.getParameter("txtTraEr").trim();
+			String tratl=request.getParameter("txtTraTl").trim();
+			String tratm=request.getParameter("txtTraTm").trim();
+			String traad=request.getParameter("txtTraAd").trim();
+			String tradi=request.getParameter("txtTraDi").trim();		
+			if(traer==""||tratl==""||tratm==""||traad=="") {
+				response.sendRedirect("addTraInfo.jsp?error=nonull");
+			}else {
+				TraDao tdao=new TraDao();
+				tdao.addTra(traer,tratl,tratm,traad,tradi);
+				
+				response.sendRedirect("train.jsp");
+			}
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
+		}		
 	}
 }

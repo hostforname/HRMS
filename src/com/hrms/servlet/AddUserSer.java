@@ -16,18 +16,21 @@ public class AddUserSer extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		String usena=request.getParameter("txtUseNa").trim();
-		String usepwd=request.getParameter("txtUsePwd").trim();
-		if(usena==""||usepwd=="") {
-			response.sendRedirect("addUser.jsp?error=nonull");
-		}else {
+		try {
+			String usena=request.getParameter("txtUseNa").trim();
+			String usepwd=request.getParameter("txtUsePwd").trim();
+			if(usena==""||usepwd=="") {
+				response.sendRedirect("addUser.jsp?error=nonull");
+			}else {
 
-			UserDao udao=new UserDao();
-			udao.addUser(usena,usepwd);
+				UserDao udao=new UserDao();
+				udao.addUser(usena,usepwd);
+				
+				response.sendRedirect("user.jsp");
 			
-			response.sendRedirect("user.jsp");
-		
+			}
+		}catch(Exception e) {
+			response.sendRedirect("error.html");
 		}
 	}
 }
